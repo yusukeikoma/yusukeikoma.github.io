@@ -1,16 +1,35 @@
+/* === Light mode: soft blue background, white cards === */
+:root {
+    --theme: #f3f8fc;
+    --entry: #ffffff;
+    --primary: #2c3e50;
+    --secondary: #5a7a96;
+    --tertiary: #dce6ee;
+    --border: #d0dce6;
+}
+
 /* === Base font size === */
 html {
-    font-size: 18px;
+    font-size: 15px;
 }
 
 body {
     font-size: 1.1rem;
+    font-family: 'Lora', 'Noto Serif JP', Georgia, serif;
+    background: var(--theme) !important;
+}
+
+h1, h2, h3, h4, h5, h6,
+.post-title,
+.logo a {
+    font-family: 'Lora', 'Noto Serif JP', Georgia, serif;
+    font-weight: 600;
 }
 
 /* === Post content === */
 .post-content {
     font-size: 1.2rem;
-    line-height: 1.9;
+    line-height: 1.7;
 }
 
 .post-content h2 {
@@ -135,6 +154,20 @@ body {
     top: 0;
     right: 0;
     border-radius: 0 8px 0 6px;
+}
+
+/* === Cards: Next/Prev, Tags, etc. === */
+.paginav a,
+.post-tags a,
+.terms-tags a {
+    background: #ffffff;
+    border-radius: 8px;
+}
+
+/* === Table of Contents === */
+.toc {
+    background: #ffffff;
+    border-radius: 8px;
 }
 
 /* === Footer === */
