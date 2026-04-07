@@ -1,9 +1,9 @@
 ---
 title: "AI Agent Clean Architecture"
-date: 2026-04-07
+date: 2026-04-07T12:00:00+09:00
 draft: false
 tags: ["ai agent", "software architecture"]
-summary: "Welcome to my blog -- a space for sharing notes on CS, ML, and engineering."
+summary: "Why I built an AI agent platform in Go instead of using LangChain, and how Clean Architecture made model, memory, tool, and streaming concerns independently replaceable."
 math: false
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: "Hello World"
-date: 2026-04-07
+date: 2026-04-07T10:00:00+09:00
 draft: false
 tags: ["meta"]
 summary: "Welcome to my blog -- a space for sharing notes on CS, ML, and engineering."
