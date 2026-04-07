@@ -69,7 +69,9 @@ paginate = 10
     codeFences = true
     guessSyntax = true
     lineNos = false
-    style = "monokai"
+    lineNumbersInTable = false
+    style = "dracula"
+    noClasses = true
   [markup.goldmark]
     [markup.goldmark.renderer]
       unsafe = true

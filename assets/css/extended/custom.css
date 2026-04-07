@@ -61,6 +61,82 @@ body {
     font-size: 1rem;
 }
 
+/* === Code blocks === */
+.highlight,
+.highlight > div,
+.highlight > pre,
+.highlight table,
+.highlight table td,
+.highlight table tr {
+    background: transparent !important;
+}
+
+.highlight {
+    position: relative;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    margin: 1.5rem 0;
+}
+
+.highlight pre {
+    border-radius: 8px;
+    padding: 1.2rem;
+    margin: 0;
+    overflow-x: auto;
+}
+
+.post-content .highlight pre code {
+    background: transparent !important;
+}
+
+/* Language label */
+.highlight > div::before,
+.highlight > pre::before {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 0.2rem 0.7rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: rgba(255, 255, 255, 0.6);
+    background: rgba(255, 255, 255, 0.1);
+    border-bottom-left-radius: 6px;
+    z-index: 1;
+}
+
+.language-go > div::before, .language-go > pre::before { content: "Go"; }
+.language-python > div::before, .language-python > pre::before { content: "Python"; }
+.language-typescript > div::before, .language-typescript > pre::before { content: "TypeScript"; }
+.language-javascript > div::before, .language-javascript > pre::before { content: "JavaScript"; }
+.language-bash > div::before, .language-bash > pre::before { content: "Bash"; }
+.language-shell > div::before, .language-shell > pre::before { content: "Shell"; }
+.language-yaml > div::before, .language-yaml > pre::before { content: "YAML"; }
+.language-json > div::before, .language-json > pre::before { content: "JSON"; }
+.language-sql > div::before, .language-sql > pre::before { content: "SQL"; }
+.language-text > div::before, .language-text > pre::before { content: ""; }
+
+/* Line numbers */
+.highlight .lnt {
+    color: rgba(255, 255, 255, 0.3);
+    padding-right: 1em;
+    user-select: none;
+}
+
+/* Dark mode shadow */
+.dark .highlight {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+/* Copy button adjustment */
+.highlight .copy-code {
+    top: 0;
+    right: 0;
+    border-radius: 0 8px 0 6px;
+}
+
 /* === Footer === */
 .footer {
     font-size: 0.95rem;
