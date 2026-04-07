@@ -145,7 +145,7 @@ h1, h2, h3, h4, h5, h6,
 }
 
 /* Dark mode shadow */
-.dark .highlight {
+[data-theme="dark"] .highlight {
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
 }
 
@@ -162,6 +162,16 @@ h1, h2, h3, h4, h5, h6,
 .terms-tags a {
     background: #ffffff;
     border-radius: 8px;
+}
+
+[data-theme="dark"] .paginav a,
+[data-theme="dark"] .post-tags a,
+[data-theme="dark"] .terms-tags a {
+    background: var(--entry);
+}
+
+[data-theme="dark"] .toc {
+    background: var(--entry);
 }
 
 /* === Table of Contents === */
