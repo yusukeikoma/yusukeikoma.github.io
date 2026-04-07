@@ -13,7 +13,6 @@ I started this blog as a place to organize and share my thoughts on topics I'm s
 
 - **Machine Learning & AI** -- Papers, experiments, and concepts I'm exploring
 - **Systems & Infrastructure** -- Cloud, distributed systems, and DevOps
-- **GPU / HPC** -- Parallel computing and performance optimization
 - **Software Engineering** -- Architecture, tools, and lessons from real projects
 
 Writing helps me think more clearly. If any of these topics interest you, I hope you'll find something useful here.
