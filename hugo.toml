@@ -1,0 +1,81 @@
+baseURL = 'https://yusukeikoma.github.io/'
+languageCode = 'en-us'
+title = "Ikoma's Blog"
+theme = 'PaperMod'
+paginate = 10
+
+[params]
+  env = "production"
+  description = "Notes on research and learning in CS, ML, and engineering"
+  author = "Yusuke Ikoma"
+  defaultTheme = "auto"  # auto: follows OS setting
+  ShowReadingTime = true
+  ShowShareButtons = false
+  ShowPostNavLinks = true
+  ShowBreadCrumbs = true
+  ShowCodeCopyButtons = true
+  ShowToc = true
+  TocOpen = false
+  ShowWordCount = false
+  UseHugoToc = true
+
+  [params.homeInfoParams]
+    Title = "👋 Hi, I'm Yusuke Ikoma"
+    Content = "Welcome to my blog. I write about CS, ML/AI, GPU computing, and software engineering."
+
+  [[params.socialIcons]]
+    name = "github"
+    url = "https://github.com/yusukeikoma"
+  [[params.socialIcons]]
+    name = "x"
+    url = "https://x.com/IYusuke1205"
+  [[params.socialIcons]]
+    name = "linkedin"
+    url = "https://www.linkedin.com/in/yusuke-ikoma-510459338"
+
+
+# Math support (KaTeX)
+[params.math]
+  enable = true
+
+# Search
+[outputs]
+  home = ["HTML", "RSS", "JSON"]
+
+# Menu
+[[menu.main]]
+  name = "Posts"
+  url = "/posts/"
+  weight = 1
+[[menu.main]]
+  name = "About"
+  url = "/about/"
+  weight = 2
+[[menu.main]]
+  name = "Archive"
+  url = "/archives/"
+  weight = 3
+[[menu.main]]
+  name = "Tags"
+  url = "/tags/"
+  weight = 4
+[[menu.main]]
+  name = "Search"
+  url = "/search/"
+  weight = 5
+
+[markup]
+  [markup.highlight]
+    codeFences = true
+    guessSyntax = true
+    lineNos = false
+    style = "monokai"
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
+    [markup.goldmark.extensions]
+      [markup.goldmark.extensions.passthrough]
+        enable = true
+        [markup.goldmark.extensions.passthrough.delimiters]
+          block = [["\\[", "\\]"], ["$$", "$$"]]
+          inline = [["\\(", "\\)"], ["$", "$"]]

@@ -1,0 +1,99 @@
+/* === Base font size === */
+html {
+    font-size: 18px;
+}
+
+body {
+    font-size: 1.1rem;
+}
+
+/* === Post content === */
+.post-content {
+    font-size: 1.2rem;
+    line-height: 1.9;
+}
+
+.post-content h2 {
+    font-size: 1.7rem;
+}
+
+.post-content h3 {
+    font-size: 1.4rem;
+}
+
+/* === Post title === */
+.post-title {
+    font-size: 2.4rem;
+}
+
+/* === Breadcrumbs === */
+.breadcrumbs {
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+}
+
+/* === Post list (home, archive) === */
+.entry-header h2 {
+    font-size: 1.6rem;
+}
+
+.entry-content {
+    font-size: 1.1rem;
+}
+
+/* === Home info === */
+.home-info .entry-content {
+    font-size: 1.2rem;
+}
+
+/* === Nav menu === */
+#menu a {
+    font-size: 1.15rem;
+}
+
+/* === Post meta (date, reading time) === */
+.post-meta {
+    font-size: 1rem;
+}
+
+/* === Tags === */
+.post-tags a {
+    font-size: 1rem;
+}
+
+/* === Footer === */
+.footer {
+    font-size: 0.95rem;
+}
+
+/* === Mobile === */
+@media (max-width: 768px) {
+    html {
+        font-size: 17px;
+    }
+
+    .post-title {
+        font-size: 1.8rem;
+    }
+
+    .post-content {
+        font-size: 1.1rem;
+        line-height: 1.8;
+    }
+
+    .post-content h2 {
+        font-size: 1.4rem;
+    }
+
+    .post-content h3 {
+        font-size: 1.2rem;
+    }
+
+    .entry-header h2 {
+        font-size: 1.3rem;
+    }
+
+    #menu a {
+        font-size: 1.05rem;
+    }
+}
