@@ -1,4 +1,4 @@
-baseURL = 'https://yusukeikoma.github.io/'
+baseURL = 'https://blog.yusukeikoma.com/'
 languageCode = 'en-us'
 title = "Ikoma's Blog"
 theme = 'PaperMod'
