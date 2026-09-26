@@ -5,6 +5,7 @@ paginate = 10
 
 defaultContentLanguage = "en"
 defaultContentLanguageInSubdir = false
+disableKinds = ["taxonomy", "term"]
 
 [params]
   env = "production"
@@ -63,14 +64,6 @@ defaultContentLanguageInSubdir = false
     url = "/about/"
     weight = 2
   [[languages.en.menu.main]]
-    name = "Archive"
-    url = "/archives/"
-    weight = 3
-  [[languages.en.menu.main]]
-    name = "Tags"
-    url = "/tags/"
-    weight = 4
-  [[languages.en.menu.main]]
     name = "Search"
     url = "/search/"
     weight = 5
@@ -90,25 +83,15 @@ defaultContentLanguageInSubdir = false
       Content = "ブログへようこそ。CS、機械学習 / AI、GPU コンピューティング、ソフトウェアエンジニアリングについて書いています。"
 
   [[languages.ja.menu.main]]
-    name = "記事"
+    name = "Posts"
     url = "/posts/"
     weight = 1
   [[languages.ja.menu.main]]
     name = "About"
     url = "/about/"
     weight = 2
-    [languages.ja.menu.main.params]
-      skipLangPrefix = true
   [[languages.ja.menu.main]]
-    name = "アーカイブ"
-    url = "/archives/"
-    weight = 3
-  [[languages.ja.menu.main]]
-    name = "タグ"
-    url = "/tags/"
-    weight = 4
-  [[languages.ja.menu.main]]
-    name = "検索"
+    name = "Search"
     url = "/search/"
     weight = 5
 
