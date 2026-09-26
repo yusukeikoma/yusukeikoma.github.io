@@ -21,44 +21,6 @@ All code in this post is written for illustration. The Go examples come from the
 
 Conventions that live only in review comments do not scale. Reviewers repeat themselves, the rules drift, and new contributors cannot find out what the rules are. The usual fix, turning on a linter, fails on an existing codebase for a different reason: the first run produces a wall of findings, and a wall of findings gets the linter disabled.
 
-### Design: cite every rule, then split by enforceability
-
-I wrote the guide so that every rule points to a public source: [Effective Go](https://go.dev/doc/effective_go), [Go Code Review Comments](https://go.dev/wiki/CodeReviewComments), the [Google](https://google.github.io/styleguide/go/) and [Uber](https://github.com/uber-go/guide) style guides, and [Go Proverbs](https://go-proverbs.github.io/). A cited rule moves the discussion from "whose taste is this" to "does this apply here."
-
-Each rule is then classified as either machine-checkable or a matter of judgement. Only the first kind goes into the linter configuration, and every linter entry names the rule it enforces. Judgement rules, such as naming and package boundaries, stay in review. Putting them in a linter produces noise and `//nolint` litter.
-
-```yaml
-# .golangci.yml (golangci-lint v2)
-version: "2"
-
-linters:
-  enable:
-    - containedctx    # no context.Context in struct fields
-    - contextcheck    # propagate the caller's context, do not mint a new one
-    - errorlint       # %w wrapping, errors.Is/As instead of == and type switches
-    - gocyclo
-    - gocognit        # weighs nesting, which gocyclo does not
-    - interfacebloat
-    - nestif
-    - nolintlint      # every suppression names a linter and gives a reason
-    - staticcheck
-  settings:
-    gocyclo:
-      min-complexity: 15
-    nolintlint:
-      require-explanation: true
-      require-specific: true
-    staticcheck:
-      checks: ["all", "-ST1005"]
-
-issues:
-  new-from-merge-base: origin/main
-  max-issues-per-linter: 0
-  max-same-issues: 0
-```
-
-One entry needs explaining. `ST1005` requires error strings to start with a lowercase letter. It cannot tell a proper noun or an exported identifier from an ordinary word. In a codebase whose errors start with product or tool names, it forces a choice between scattering suppressions and writing worse messages. I disabled it and kept the rule as a review item. Before enabling a check across the board, look at what it would actually report.
-
 ### Rollout: gate new code first, then burn down by package
 
 `issues.new-from-merge-base` reports only findings introduced after the merge base with the target branch. From the first day, new code has to comply, while old code is left alone. Prefer it over `new-from-rev`. A revision like `origin/main` is a moving tip: once the base branch advances past your branch point, the diff against it contains other people's changes, and you get their findings. The merge base does not move. The CI checkout needs full history for this (`fetch-depth: 0` in `actions/checkout`), because a shallow clone has no merge base to compute.
@@ -69,7 +31,7 @@ On the refactoring itself: high cyclomatic complexity in a long function almost 
 
 Do not force every function under the threshold. A parser or protocol state machine whose single `switch` mirrors a specification is easier to check against that specification as one function. That is exactly what an explained `//nolint` is for.
 
-### Beyond lint: architecture tests with `go/parser`
+### architecture tests with `go/parser`
 
 Some rules are structural and no linter covers them. For example, every internal package must document its boundary, or a given service type may cross package boundaries only behind an interface. These are cheap to enforce as ordinary tests that parse the source tree:
 
