@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="425" height="164" viewBox="0 0 425 164">
+  <rect x="0.5" y="0.5" width="424" height="163" rx="10" fill="#ffffff" stroke="#c2c7ce"/>
+  <defs>
+    <marker id="arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto">
+      <path d="M1 1.5 L8 5 L1 8.5 Z" fill="#2b638b"/>
+    </marker>
+    <marker id="muted" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto">
+      <path d="M1 1.5 L8 5 L1 8.5 Z" fill="#72787e"/>
+    </marker>
+  </defs>
+  <text x="16.0" y="34.0" fill="#42474e" font-size="12" text-anchor="start" dominant-baseline="middle" font-family="'Inter', 'WenQuanYi Micro Hei', 'Hiragino Sans', 'Noto Sans JP', 'Yu Gothic', sans-serif">Install only</text>
+  <rect x="135" y="16" width="104" height="36" rx="6" fill="#f7f9ff" stroke="#c2c7ce"/>
+  <text x="187.0" y="34.0" fill="#181c20" font-size="13" text-anchor="middle" dominant-baseline="middle" font-family="'Inter', 'WenQuanYi Micro Hei', 'Hiragino Sans', 'Noto Sans JP', 'Yu Gothic', sans-serif">Person</text>
+  <line x1="247" y1="34.0" x2="287" y2="34.0" stroke="#2b638b" stroke-width="1.5" marker-end="url(#arr)"/>
+  <rect x="295" y="16" width="114" height="36" rx="6" fill="#f7f9ff" stroke="#c2c7ce"/>
+  <text x="352.0" y="34.0" fill="#181c20" font-size="13" text-anchor="middle" dominant-baseline="middle" font-family="'Inter', 'WenQuanYi Micro Hei', 'Hiragino Sans', 'Noto Sans JP', 'Yu Gothic', sans-serif">Machine</text>
+  <text x="16.0" y="82.0" fill="#42474e" font-size="12" text-anchor="start" dominant-baseline="middle" font-family="'Inter', 'WenQuanYi Micro Hei', 'Hiragino Sans', 'Noto Sans JP', 'Yu Gothic', sans-serif">Outbound check</text>
+  <rect x="135" y="64" width="104" height="36" rx="6" fill="#f7f9ff" stroke="#c2c7ce"/>
+  <text x="187.0" y="82.0" fill="#181c20" font-size="13" text-anchor="middle" dominant-baseline="middle" font-family="'Inter', 'WenQuanYi Micro Hei', 'Hiragino Sans', 'Noto Sans JP', 'Yu Gothic', sans-serif">Machine</text>
+  <line x1="247" y1="82.0" x2="287" y2="82.0" stroke="#2b638b" stroke-width="1.5" marker-end="url(#arr)"/>
+  <rect x="295" y="64" width="114" height="36" rx="6" fill="#f7f9ff" stroke="#c2c7ce"/>
+  <text x="352.0" y="82.0" fill="#181c20" font-size="13" text-anchor="middle" dominant-baseline="middle" font-family="'Inter', 'WenQuanYi Micro Hei', 'Hiragino Sans', 'Noto Sans JP', 'Yu Gothic', sans-serif">Control plane</text>
+  <text x="16.0" y="130.0" fill="#42474e" font-size="12" text-anchor="start" dominant-baseline="middle" font-family="'Inter', 'WenQuanYi Micro Hei', 'Hiragino Sans', 'Noto Sans JP', 'Yu Gothic', sans-serif">Person is present</text>
+  <rect x="135" y="112" width="104" height="36" rx="6" fill="#f7f9ff" stroke="#c2c7ce"/>
+  <text x="187.0" y="130.0" fill="#181c20" font-size="13" text-anchor="middle" dominant-baseline="middle" font-family="'Inter', 'WenQuanYi Micro Hei', 'Hiragino Sans', 'Noto Sans JP', 'Yu Gothic', sans-serif">Person</text>
+  <line x1="247" y1="130.0" x2="287" y2="130.0" stroke="#2b638b" stroke-width="1.5" marker-end="url(#arr)"/>
+  <rect x="295" y="112" width="114" height="36" rx="6" fill="#f7f9ff" stroke="#c2c7ce"/>
+  <text x="352.0" y="130.0" fill="#181c20" font-size="13" text-anchor="middle" dominant-baseline="middle" font-family="'Inter', 'WenQuanYi Micro Hei', 'Hiragino Sans', 'Noto Sans JP', 'Yu Gothic', sans-serif">Machine</text>
+</svg>

@@ -85,6 +85,8 @@ Each machine holds a person's key and names itself with an identifier in the bod
 
 The connection is split into three layers. SSH only at install time, a machine-originated check that continues after that, and a data plane that comes back only while a person is present.
 
+<img src="/images/resident-agent-layers.en.svg" alt="Install goes from the person to the machine, and only then. The outbound check continues from the machine to the control plane. The data plane goes from the person to the machine only while a person is present." width="425" style="max-width:100%;height:auto;">
+
 ### SSH only for install, and only the SSH a person already has
 
 The premise is that the person can SSH to that OS account. The control plane does not hold that path for them.
