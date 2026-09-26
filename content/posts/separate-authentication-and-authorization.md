@@ -1,6 +1,6 @@
 ---
 title: "Separate Authentication from What an Actor May Do"
-date: 2026-09-27T12:00:00+09:00
+date: 2026-09-26T20:30:00+09:00
 draft: false
 tags: ["security", "authorization"]
 summary: "Why authentication stops once it has produced an actor, why a route declares only the permission it needs, and why who holds that permission is derived from roles."
