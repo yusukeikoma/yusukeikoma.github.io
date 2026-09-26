@@ -1,6 +1,6 @@
 ---
 title: "Do Not Load the Whole Past into the Model"
-date: 2026-09-27T11:00:00+09:00
+date: 2026-09-26T20:20:00+09:00
 draft: false
 tags: ["agents", "memory"]
 summary: "Why the record of truth stays separate from the memory retrieved for a model, and why create versus update is decided only after search."
