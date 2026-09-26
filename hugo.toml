@@ -77,13 +77,13 @@ defaultContentLanguageInSubdir = false
 
 [languages.ja]
   languageCode = "ja-jp"
-  languageName = "日本語"
+  languageName = "Japanese"
   weight = 2
   title = "Ikoma's Blog"
   hasCJKLanguage = true
 
   [languages.ja.params]
-    languageAltTitle = "日本語"
+    languageAltTitle = "Japanese"
     description = "CS、機械学習、エンジニアリングに関する学習と研究のメモ"
     [languages.ja.params.homeInfoParams]
       Title = "👋 こんにちは、Yusuke Ikoma です"
