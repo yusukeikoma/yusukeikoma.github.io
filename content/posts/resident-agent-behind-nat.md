@@ -1,6 +1,6 @@
 ---
 title: "Keeping an Agent Resident Behind NAT"
-date: 2026-09-27T09:00:00+09:00
+date: 2026-09-26T20:00:00+09:00
 draft: false
 tags: ["agents", "networking"]
 summary: "Why a resident agent on a machine that cannot open a port keeps install, liveness, and the interactive data path on separate connections."
