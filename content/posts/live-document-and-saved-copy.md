@@ -85,6 +85,8 @@ Only a document that has never had state is built once from plain text. After th
 
 There are two documents. The in-memory document while it is open, and the save for someone who reads later. The name is one per document, and a connection attaches to that name.
 
+<img src="/images/live-document-copy.en.svg" alt="After sync, the live document is copied to the saved copy. Empty is not written before sync." width="410" style="max-width:100%;height:auto;">
+
 ### Do not show empty until sync finishes
 
 The local side builds the document before the connection. If an encoded state has already been received, it is applied before the connection. The first thing visible is not empty. If there is no state, the plain-text copy is shown until sync finishes. The collaborative surface is not presented as the document during that time. Only when there is neither a copy nor state is it treated as an empty document.
