@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="355" height="156" viewBox="0 0 355 156">
+  <rect x="0.5" y="0.5" width="354" height="155" rx="10" fill="#ffffff" stroke="#c2c7ce"/>
+  <defs>
+    <marker id="arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto">
+      <path d="M1 1.5 L8 5 L1 8.5 Z" fill="#2b638b"/>
+    </marker>
+    <marker id="muted" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto">
+      <path d="M1 1.5 L8 5 L1 8.5 Z" fill="#72787e"/>
+    </marker>
+  </defs>
+  <rect x="16" y="18" width="97" height="36" rx="6" fill="#f7f9ff" stroke="#c2c7ce"/>
+  <text x="64.5" y="36.0" fill="#181c20" font-size="13" text-anchor="middle" dominant-baseline="middle" font-family="'Inter', 'WenQuanYi Micro Hei', 'Hiragino Sans', 'Noto Sans JP', 'Yu Gothic', sans-serif">Local start</text>
+  <rect x="16" y="78" width="97" height="36" rx="6" fill="#f7f9ff" stroke="#c2c7ce"/>
+  <text x="64.5" y="96.0" fill="#181c20" font-size="13" text-anchor="middle" dominant-baseline="middle" font-family="'Inter', 'WenQuanYi Micro Hei', 'Hiragino Sans', 'Noto Sans JP', 'Yu Gothic', sans-serif">Queue</text>
+  <path d="M113 36 H129 V94 H113" fill="none" stroke="#2b638b" stroke-width="1.5"/>
+  <line x1="129" y1="65" x2="169" y2="65" stroke="#2b638b" stroke-width="1.5" marker-end="url(#arr)"/>
+  <rect x="177" y="38" width="162" height="56" rx="6" fill="#f7f9ff" stroke="#c2c7ce"/>
+  <text x="258.0" y="57.5" fill="#181c20" font-size="13" text-anchor="middle" dominant-baseline="middle" font-family="'Inter', 'WenQuanYi Micro Hei', 'Hiragino Sans', 'Noto Sans JP', 'Yu Gothic', sans-serif">One open admission</text>
+  <text x="258.0" y="74.0" fill="#42474e" font-size="12" text-anchor="middle" dominant-baseline="middle" font-family="'Inter', 'WenQuanYi Micro Hei', 'Hiragino Sans', 'Noto Sans JP', 'Yu Gothic', sans-serif">Destination fixed</text>
+  <path d="M286.0 94 C 286.0 126, 230.0 126, 230.0 100" fill="none" stroke="#2b638b" stroke-width="1.5" marker-end="url(#arr)"/>
+  <text x="258.0" y="140.0" fill="#2b638b" font-size="12" text-anchor="middle" dominant-baseline="middle" font-family="'Inter', 'WenQuanYi Micro Hei', 'Hiragino Sans', 'Noto Sans JP', 'Yu Gothic', sans-serif">Same on resend</text>
+</svg>

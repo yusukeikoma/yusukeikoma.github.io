@@ -93,6 +93,8 @@ In this design, an admission is not deleted by hanging it off the machine row. A
 
 A start passes through one admission. Starting locally, and taking from the queue, both ask for the same admission before execution.
 
+<img src="/images/one-admission.en.svg" alt="A local start and the queue both enter one open admission. The destination is fixed there. A resend returns the same admission." width="355" style="max-width:100%;height:auto;">
+
 ### Write the destination at submit time
 
 When an admission is created, the machine, the place, the generation of the placement, and the digest of the request are written together. The generation is there to distinguish a change of place or of which work it belongs to. Start processing checks whether the current placement matches what was written on the admission. If it does not match, it is refused. It is not rewritten onto another machine and treated as success.
