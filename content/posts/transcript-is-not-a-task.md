@@ -77,6 +77,8 @@ Estimating the owner from the roster was also rejected. If the automatic recorde
 
 The stages are four. Saving the text, the summary, routing which workspace reads it, and extracting tasks by reading the text.
 
+<img src="/images/transcript-stages.en.svg" alt="The summary and the routing follow the saved text. Task extraction reads the saved text, and it comes after routing." width="387" style="max-width:100%;height:auto;">
+
 ### Save the text first
 
 A finished recording is a request for transcription. The processing that receives the text saves the text first. If the recording is private and there is no workspace yet, it stops there. The summary and the task judgment are contents of a workspace. When the owner shares it, that judgment is added to the same already-saved text. If transcription finished before the share, it is not redone.
