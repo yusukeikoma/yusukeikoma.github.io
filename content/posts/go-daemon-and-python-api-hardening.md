@@ -1,7 +1,7 @@
 ---
 title: "Hardening a Go Daemon and a Python API"
-date: 2026-09-26T20:00:00+09:00
-draft: true
+date: 2026-09-26T19:00:00+09:00
+draft: false
 tags: ["go", "python", "postgresql", "concurrency", "macos"]
 summary: "Five techniques from a polyglot codebase: rolling out golangci-lint on existing Go code, running the race detector in CI, bounding subprocess lifetimes, re-registering launchd services without the bootout race, and choosing PostgreSQL row-lock strength around foreign keys."
 math: false
