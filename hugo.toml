@@ -2,6 +2,7 @@ baseURL = 'https://blog.yusukeikoma.com/'
 title = "Ikoma's Blog"
 theme = 'PaperMod'
 paginate = 10
+capitalizeListTitles = false
 
 defaultContentLanguage = "en"
 defaultContentLanguageInSubdir = false
