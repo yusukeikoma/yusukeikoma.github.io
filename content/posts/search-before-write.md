@@ -75,6 +75,8 @@ Stopping the next event until the previous row appears in search. Index lag beco
 
 Memory is split into three layers. Rows of the record, slices retrieved and handed over, and the decision of an operation.
 
+<img src="/images/search-before-write.en.svg" alt="A searched slice is taken from the record. Create or update is decided after that slice. The write goes back to the record." width="533" style="max-width:100%;height:auto;">
+
 ### The record stays as rows
 
 Tasks, events, and people are each their own rows. A copy expanded into the model's input at one moment is not treated as the latest. Deleting a row, updating a row, and creating a row are operations on the record. They are not appends onto a search result.
