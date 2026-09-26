@@ -1,6 +1,6 @@
 ---
 title: "Separate the Live Document from the Saved Copy"
-date: 2026-09-27T14:00:00+09:00
+date: 2026-09-26T20:50:00+09:00
 draft: false
 tags: ["collaboration", "documents"]
 summary: "Why the live document merges without conflict while it is open, why the save is a separate copy, and why an empty document is neither shown nor written before sync finishes."
