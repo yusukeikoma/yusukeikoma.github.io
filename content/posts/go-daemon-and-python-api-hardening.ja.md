@@ -20,44 +20,6 @@ isCJKLanguage: true
 
 レビューコメントの中にしか存在しない規約はスケールしません。レビュアーは同じ指摘を繰り返し、ルールは少しずつぶれていき、新しく加わったメンバーはそもそもルールが何なのかを知る手段がありません。定番の解決策は linter を有効にすることですが、既存のコードベースでは別の理由でうまくいきません。初回の実行で大量の指摘が一度に出て、その指摘の山を前に結局 linter が無効化されてしまうのです。
 
-### 設計：すべてのルールに出典を示し、機械的に検査できるかどうかで分ける
-
-ガイドは、すべてのルールが公開された出典を参照するように書きました。[Effective Go](https://go.dev/doc/effective_go)、[Go Code Review Comments](https://go.dev/wiki/CodeReviewComments)、[Google](https://google.github.io/styleguide/go/) と [Uber](https://github.com/uber-go/guide) のスタイルガイド、そして [Go Proverbs](https://go-proverbs.github.io/) です。出典のあるルールなら、議論は「これは誰の好みか」から「これはこのケースに当てはまるか」に移ります。
-
-そのうえで、各ルールを機械的に検査できるものと、判断を要するものに分類します。linter の設定に入れるのは前者だけです。linter の各エントリには、それが担保するルールを明記しておきます。命名やパッケージ境界のような判断を要するルールはレビューに残します。これを linter に載せても、ノイズが増えて `//nolint` が散乱するだけです。
-
-```yaml
-# .golangci.yml (golangci-lint v2)
-version: "2"
-
-linters:
-  enable:
-    - containedctx    # struct のフィールドに context.Context を持たせません
-    - contextcheck    # 呼び出し元の context を伝播し、新たに作りません
-    - errorlint       # %w でラップし、== や型 switch ではなく errors.Is/As を使います
-    - gocyclo
-    - gocognit        # gocyclo が考慮しないネストの深さを重み付けします
-    - interfacebloat
-    - nestif
-    - nolintlint      # すべての抑制に linter 名と理由を明記させます
-    - staticcheck
-  settings:
-    gocyclo:
-      min-complexity: 15
-    nolintlint:
-      require-explanation: true
-      require-specific: true
-    staticcheck:
-      checks: ["all", "-ST1005"]
-
-issues:
-  new-from-merge-base: origin/main
-  max-issues-per-linter: 0
-  max-same-issues: 0
-```
-
-1 つだけ説明が必要なエントリがあります。`ST1005` は、エラー文字列を小文字で始めることを求めるチェックです。これは固有名詞やエクスポートされた識別子と、普通の単語とを区別できません。エラーメッセージがプロダクト名やツール名で始まるコードベースでは、抑制コメントをばらまくか、メッセージの質を落とすかの二択を迫られます。そこでこのチェックは無効にし、ルール自体はレビュー項目として残しました。あるチェックを全面的に有効にする前に、それが実際に何を報告するのかを確認しておくべきです。
-
 ### 導入：まず新しいコードをゲートし、既存の違反はパッケージ単位で解消する
 
 `issues.new-from-merge-base` は、ターゲットブランチとのマージベース以降に持ち込まれた指摘だけを報告します。これにより、初日から新しいコードには準拠を求めつつ、既存のコードには手を付けずに済みます。`new-from-rev` ではなく、こちらを選んでください。`origin/main` のようなリビジョンは動き続ける先端であり、ベースブランチが自分の分岐点より先に進むと、それとの差分には他人の変更が含まれ、他人の指摘まで報告されてしまいます。マージベースは動きません。ただし、CI のチェックアウトには全履歴が必要になります（`actions/checkout` の `fetch-depth: 0`）。shallow clone ではマージベースを計算できないからです。
@@ -68,7 +30,7 @@ issues:
 
 すべての関数を無理に閾値以下に収める必要はありません。単一の `switch` が仕様をそのまま写しているパーサやプロトコルのステートマシンは、1 つの関数のままのほうが仕様と照らし合わせやすくなります。理由付きの `//nolint` は、まさにこういうときのためにあります。
 
-### lint の先へ：`go/parser` によるアーキテクチャテスト
+### `go/parser` によるアーキテクチャテスト
 
 構造に関するルールの中には、どの linter もカバーしていないものがあります。たとえば、internal 配下のすべてのパッケージは自身の境界をドキュメント化しなければならない、あるいは特定のサービス型はインターフェース越しにしかパッケージ境界をまたいではならない、といったルールです。こうしたルールは、ソースツリーをパースする普通のテストとして安価に強制できます。
 
