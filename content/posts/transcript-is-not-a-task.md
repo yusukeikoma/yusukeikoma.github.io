@@ -1,6 +1,6 @@
 ---
 title: "A Transcript Is Not a Task List"
-date: 2026-09-27T10:00:00+09:00
+date: 2026-09-26T20:10:00+09:00
 draft: false
 tags: ["agents", "meetings"]
 summary: "Why a meeting's speech is not turned into tasks in one step, and why transcription, summary, and task extraction fail under different conditions."
