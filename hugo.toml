@@ -1,8 +1,10 @@
 baseURL = 'https://blog.yusukeikoma.com/'
-languageCode = 'en-us'
 title = "Ikoma's Blog"
 theme = 'PaperMod'
 paginate = 10
+
+defaultContentLanguage = "en"
+defaultContentLanguageInSubdir = false
 
 [params]
   env = "production"
@@ -18,6 +20,8 @@ paginate = 10
   TocOpen = false
   ShowWordCount = false
   UseHugoToc = true
+  displayFullLangName = true
+  disableLangToggle = false
 
   [params.homeInfoParams]
     Title = "👋 Hi, I'm Yusuke Ikoma"
@@ -33,7 +37,6 @@ paginate = 10
     name = "linkedin"
     url = "https://www.linkedin.com/in/yusuke-ikoma-510459338"
 
-
 # Math support (KaTeX)
 [params.math]
   enable = true
@@ -42,27 +45,72 @@ paginate = 10
 [outputs]
   home = ["HTML", "RSS", "JSON"]
 
-# Menu
-[[menu.main]]
-  name = "Posts"
-  url = "/posts/"
+[languages.en]
+  languageCode = "en-us"
+  languageName = "English"
   weight = 1
-[[menu.main]]
-  name = "About"
-  url = "/about/"
+  title = "Ikoma's Blog"
+
+  [languages.en.params]
+    languageAltTitle = "English"
+
+  [[languages.en.menu.main]]
+    name = "Posts"
+    url = "/posts/"
+    weight = 1
+  [[languages.en.menu.main]]
+    name = "About"
+    url = "/about/"
+    weight = 2
+  [[languages.en.menu.main]]
+    name = "Archive"
+    url = "/archives/"
+    weight = 3
+  [[languages.en.menu.main]]
+    name = "Tags"
+    url = "/tags/"
+    weight = 4
+  [[languages.en.menu.main]]
+    name = "Search"
+    url = "/search/"
+    weight = 5
+
+[languages.ja]
+  languageCode = "ja-jp"
+  languageName = "日本語"
   weight = 2
-[[menu.main]]
-  name = "Archive"
-  url = "/archives/"
-  weight = 3
-[[menu.main]]
-  name = "Tags"
-  url = "/tags/"
-  weight = 4
-[[menu.main]]
-  name = "Search"
-  url = "/search/"
-  weight = 5
+  title = "Ikoma's Blog"
+  hasCJKLanguage = true
+
+  [languages.ja.params]
+    languageAltTitle = "日本語"
+    description = "CS、機械学習、エンジニアリングに関する学習と研究のメモ"
+    [languages.ja.params.homeInfoParams]
+      Title = "👋 こんにちは、Yusuke Ikoma です"
+      Content = "ブログへようこそ。CS、機械学習 / AI、GPU コンピューティング、ソフトウェアエンジニアリングについて書いています。"
+
+  [[languages.ja.menu.main]]
+    name = "記事"
+    url = "/posts/"
+    weight = 1
+  [[languages.ja.menu.main]]
+    name = "About"
+    url = "/about/"
+    weight = 2
+    [languages.ja.menu.main.params]
+      skipLangPrefix = true
+  [[languages.ja.menu.main]]
+    name = "アーカイブ"
+    url = "/archives/"
+    weight = 3
+  [[languages.ja.menu.main]]
+    name = "タグ"
+    url = "/tags/"
+    weight = 4
+  [[languages.ja.menu.main]]
+    name = "検索"
+    url = "/search/"
+    weight = 5
 
 [markup]
   [markup.highlight]
