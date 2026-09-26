@@ -1,11 +1,74 @@
-/* === Light mode: soft blue background, white cards === */
+/* === Material Design 3 color roles ===
+   Generated with @material/material-color-utilities, SchemeTonalSpot, seed #5a7a96
+   (the blog's original blue; Google blues sit at hue ~266 and turn lavender when light). */
 :root {
-    --theme: #f3f8fc;
-    --entry: #ffffff;
-    --primary: #2c3e50;
-    --secondary: #5a7a96;
-    --tertiary: #dce6ee;
-    --border: #d0dce6;
+    --md-primary: #2b638b;
+    --md-on-primary: #ffffff;
+    --md-primary-container: #cce5ff;
+    --md-on-primary-container: #054b71;
+    --md-secondary-container: #d4e4f6;
+    --md-on-secondary-container: #394857;
+    --md-surface: #f7f9ff;
+    --md-surface-container-lowest: #ffffff;
+    --md-surface-container-low: #f1f4f9;
+    --md-surface-container: #ebeef3;
+    --md-surface-container-high: #e6e8ee;
+    --md-on-surface: #181c20;
+    --md-on-surface-variant: #42474e;
+    --md-outline: #72787e;
+    --md-outline-variant: #c2c7ce;
+}
+
+:root[data-theme="dark"] {
+    --md-primary: #98ccf9;
+    --md-on-primary: #003351;
+    --md-primary-container: #054b71;
+    --md-on-primary-container: #cce5ff;
+    --md-secondary-container: #394857;
+    --md-on-secondary-container: #d4e4f6;
+    --md-surface: #101418;
+    --md-surface-container-lowest: #0b0f12;
+    --md-surface-container-low: #181c20;
+    --md-surface-container: #1c2024;
+    --md-surface-container-high: #272a2e;
+    --md-on-surface: #e0e2e8;
+    --md-on-surface-variant: #c2c7ce;
+    --md-outline: #8c9198;
+    --md-outline-variant: #42474e;
+}
+
+/* PaperMod's variables mapped onto MD3 roles; cards sit one tonal step above the page. */
+:root,
+:root[data-theme="dark"] {
+    --theme: var(--md-surface-container-low);
+    --entry: var(--md-surface-container-lowest);
+    --primary: var(--md-on-surface);
+    --content: var(--md-on-surface);
+    --secondary: var(--md-on-surface-variant);
+    --tertiary: var(--md-outline-variant);
+    --border: var(--md-outline-variant);
+    --code-bg: var(--md-surface-container-high);
+    --radius: 12px;
+}
+
+:root[data-theme="dark"] {
+    --theme: var(--md-surface);
+    --entry: var(--md-surface-container);
+}
+
+/* === Native UI (scrollbars, form controls) follows the site's own theme toggle === */
+html {
+    color-scheme: light dark;
+    accent-color: var(--md-primary);
+    scrollbar-color: var(--md-outline) var(--theme);
+}
+
+html[data-theme="dark"] {
+    color-scheme: dark;
+}
+
+html[data-theme="light"] {
+    color-scheme: light;
 }
 
 /* === Base font size === */
@@ -16,7 +79,17 @@ html {
 body {
     font-size: 1.1rem;
     font-family: 'Lora', 'Noto Serif JP', Georgia, serif;
+    /* Keep fallback fonts (Georgia, serif) sized to match Lora's x-height,
+       so text doesn't visibly jump when the web font finishes loading. */
+    font-size-adjust: from-font;
     background: var(--theme) !important;
+}
+
+/* === Smooth cross-page navigation, skipped entirely for users who prefer reduced motion === */
+@media (prefers-reduced-motion: no-preference) {
+    @view-transition {
+        navigation: auto;
+    }
 }
 
 h1, h2, h3, h4, h5, h6,
@@ -92,14 +165,13 @@ h1, h2, h3, h4, h5, h6,
 
 .highlight {
     position: relative;
-    border-radius: 8px;
+    border-radius: var(--radius);
     overflow: hidden;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
     margin: 1.5rem 0;
 }
 
 .highlight pre {
-    border-radius: 8px;
+    border-radius: var(--radius);
     padding: 1.2rem;
     margin: 0;
     overflow-x: auto;
@@ -144,40 +216,67 @@ h1, h2, h3, h4, h5, h6,
     user-select: none;
 }
 
-/* Dark mode shadow */
-[data-theme="dark"] .highlight {
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
-}
-
 /* Copy button adjustment */
 .highlight .copy-code {
     top: 0;
     right: 0;
-    border-radius: 0 8px 0 6px;
+    border-radius: 0 var(--radius) 0 6px;
 }
 
-/* === Cards: Next/Prev, Tags, etc. === */
+/* === MD3 cards: tonal elevation instead of borders === */
+.post-entry,
+.paginav,
+details.toc,
+[data-theme="dark"] details.toc {
+    background: var(--entry);
+    border: none;
+    border-radius: var(--radius);
+}
+
+/* MD3 state layers: 8% on-surface overlay on hover, 10% on focus/press */
+.post-entry,
 .paginav a,
-.post-tags a,
-.terms-tags a {
-    background: #ffffff;
+.post-tags a {
+    transition: background-color 0.2s ease;
+}
+
+.post-entry:hover {
+    background: color-mix(in srgb, var(--entry), var(--md-on-surface) 8%);
+}
+
+.post-entry:focus-within,
+.post-entry:active {
+    background: color-mix(in srgb, var(--entry), var(--md-on-surface) 10%);
+}
+
+.paginav a:hover {
+    background: color-mix(in srgb, var(--entry), var(--md-on-surface) 8%);
+}
+
+/* Tags as MD3 assist chips (small shape, 8px) */
+.post-tags a {
+    background: transparent;
+    border: 1px solid var(--md-outline-variant);
     border-radius: 8px;
+    color: var(--md-on-surface-variant);
 }
 
-[data-theme="dark"] .paginav a,
-[data-theme="dark"] .post-tags a,
-[data-theme="dark"] .terms-tags a {
-    background: var(--entry);
+.post-tags a:hover {
+    background: color-mix(in srgb, transparent, var(--md-on-surface) 8%);
 }
 
-[data-theme="dark"] .toc {
-    background: var(--entry);
+/* === Links and focus use the MD3 primary role === */
+.post-content a {
+    color: var(--md-primary);
+    box-shadow: none;
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.2em;
 }
 
-/* === Table of Contents === */
-.toc {
-    background: #ffffff;
-    border-radius: 8px;
+:focus-visible {
+    outline: 3px solid var(--md-primary);
+    outline-offset: 2px;
 }
 
 /* === Footer === */

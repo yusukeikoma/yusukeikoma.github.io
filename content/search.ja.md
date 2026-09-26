@@ -1,6 +1,6 @@
 ---
-title: "検索"
+title: "Search"
 layout: "search"
-summary: "記事を検索"
-placeholder: "検索..."
+summary: "Search posts"
+placeholder: "Search..."
 ---
