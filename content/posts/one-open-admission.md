@@ -1,6 +1,6 @@
 ---
 title: "One Open Admission While a Start Is Unfinished"
-date: 2026-09-27T13:00:00+09:00
+date: 2026-09-26T20:40:00+09:00
 draft: false
 tags: ["distributed systems", "concurrency"]
 summary: "Why an unfinished admission to start is one per workspace surface that shares a place, and why the destination is written at submit time and is not moved while a machine is silent."
