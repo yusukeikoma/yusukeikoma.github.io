@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="700" height="350" viewBox="0 0 700 350">
+  <rect x="0.5" y="0.5" width="699" height="349" rx="12" fill="#ffffff" stroke="#c2c7ce"/>
+  <defs>
+    <marker id="arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M1.2 1.4 L8.2 5 L1.2 8.6 Z" fill="#2b638b"/>
+    </marker>
+    <clipPath id="cardclip"><rect x="1" y="1" width="698" height="348" rx="12"/></clipPath>
+  </defs>
+  <g clip-path="url(#cardclip)">
+  <rect x="0" y="0" width="700" height="46" fill="#f7f9ff"/>
+  <line x1="0" y1="46" x2="700" y2="46" stroke="#c2c7ce"/>
+  <text x="20.0" y="23.0" fill="#181c20" font-size="15" font-weight="600" text-anchor="start" dominant-baseline="middle" font-family="'Inter', 'WenQuanYi Micro Hei', 'Hiragino Sans', 'Noto Sans JP', 'Yu Gothic', sans-serif">人がいるとき</text>
+  <text x="682.0" y="24.0" fill="#8a4545" font-size="12" text-anchor="end" dominant-baseline="middle" font-family="'Inter', 'WenQuanYi Micro Hei', 'Hiragino Sans', 'Noto Sans JP', 'Yu Gothic', sans-serif">通らない</text>
+  <circle cx="618" cy="24" r="7" fill="#ffffff" stroke="#8a4545" stroke-width="1.4"/>
+  <line x1="614" y1="28" x2="622" y2="20" stroke="#8a4545" stroke-width="1.4"/>
+  <text x="602.0" y="24.0" fill="#2b638b" font-size="12" text-anchor="end" dominant-baseline="middle" font-family="'Inter', 'WenQuanYi Micro Hei', 'Hiragino Sans', 'Noto Sans JP', 'Yu Gothic', sans-serif">通る</text>
+  <line x1="548" y1="24" x2="570" y2="24" stroke="#2b638b" stroke-width="1.6" marker-end="url(#arr)"/>
+  <rect x="12" y="58" width="676" height="176" rx="8" fill="#f4f8fc"/>
+  <rect x="28" y="72" width="110" height="112" rx="8" fill="#ffffff" stroke="#2b638b" stroke-width="1.4"/>
+  <text x="83.0" y="128.0" fill="#181c20" font-size="14" font-weight="600" text-anchor="middle" dominant-baseline="middle" font-family="'Inter', 'WenQuanYi Micro Hei', 'Hiragino Sans', 'Noto Sans JP', 'Yu Gothic', sans-serif">人</text>
+  <rect x="552" y="72" width="120" height="112" rx="8" fill="#ffffff" stroke="#2b638b" stroke-width="1.4"/>
+  <text x="612.0" y="128.0" fill="#181c20" font-size="14" font-weight="600" text-anchor="middle" dominant-baseline="middle" font-family="'Inter', 'WenQuanYi Micro Hei', 'Hiragino Sans', 'Noto Sans JP', 'Yu Gothic', sans-serif">マシン</text>
+  <line x1="148" y1="104" x2="542" y2="104" stroke="#2b638b" stroke-width="1.7" marker-end="url(#arr)"/>
+  <text x="345.0" y="92.0" fill="#2b638b" font-size="12" text-anchor="middle" dominant-baseline="middle" font-family="'Inter', 'WenQuanYi Micro Hei', 'Hiragino Sans', 'Noto Sans JP', 'Yu Gothic', sans-serif">SSH</text>
+  <rect x="312.0" y="117.0" width="66" height="22" rx="11" fill="#e7f2fb" stroke="#2b638b"/>
+  <text x="345.0" y="128.0" fill="#2b638b" font-size="12" text-anchor="middle" dominant-baseline="middle" font-family="'Inter', 'WenQuanYi Micro Hei', 'Hiragino Sans', 'Noto Sans JP', 'Yu Gothic', sans-serif">読み書き</text>
+  <line x1="542" y1="156" x2="154" y2="156" stroke="#2b638b" stroke-width="1.7" marker-end="url(#arr)"/>
+  <text x="345.0" y="176.0" fill="#2b638b" font-size="12" text-anchor="middle" dominant-baseline="middle" font-family="'Inter', 'WenQuanYi Micro Hei', 'Hiragino Sans', 'Noto Sans JP', 'Yu Gothic', sans-serif">変更の通知</text>
+  <rect x="12" y="246" width="676" height="88" rx="8" fill="#fbf7f7"/>
+  <text x="28.0" y="268.0" fill="#42474e" font-size="13" font-weight="600" text-anchor="start" dominant-baseline="middle" font-family="'Inter', 'WenQuanYi Micro Hei', 'Hiragino Sans', 'Noto Sans JP', 'Yu Gothic', sans-serif">人がいないとき</text>
+  <rect x="109.0" y="293.0" width="102" height="22" rx="11" fill="#f8ecec" stroke="#8a4545"/>
+  <text x="160.0" y="304.0" fill="#8a4545" font-size="12" text-anchor="middle" dominant-baseline="middle" font-family="'Inter', 'WenQuanYi Micro Hei', 'Hiragino Sans', 'Noto Sans JP', 'Yu Gothic', sans-serif">データ面は待つ</text>
+  <rect x="437.0" y="293.0" width="126" height="22" rx="11" fill="#e7f2fb" stroke="#2b638b"/>
+  <text x="500.0" y="304.0" fill="#2b638b" font-size="12" text-anchor="middle" dominant-baseline="middle" font-family="'Inter', 'WenQuanYi Micro Hei', 'Hiragino Sans', 'Noto Sans JP', 'Yu Gothic', sans-serif">外向きの確認は続く</text>
+  </g>
+</svg>
