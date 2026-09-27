@@ -77,7 +77,13 @@ Estimating the owner from the roster was also rejected. If the automatic recorde
 
 The stages are four. Saving the text, the summary, routing which workspace reads it, and extracting tasks by reading the text.
 
-<img src="/images/transcript-stages.en.svg" alt="The summary and the routing follow the saved text. Task extraction reads the saved text, and it comes after routing." width="387" style="max-width:100%;height:auto;">
+<img src="/images/transcript-data.en.svg" alt="The summary reads the saved text, and routing reads the summary. Routing does not create a task. Task extraction reads the saved text, not the summary, and it runs after routing." width="700" style="max-width:100%;height:auto;">
+
+The saved text is the source both later stages read. The summary reads it, and routing reads the summary. Routing has no arrow that creates a task. Task extraction reads the saved text, not the summary, and it runs after routing.
+
+<img src="/images/transcript-failure.en.svg" alt="A failed transcription leaves the recording. A failed summary leaves the saved text. When routing stops, no task is created and the text stays." width="700" style="max-width:100%;height:auto;">
+
+A failed transcription does not delete the recording. A failed summary does not delete the saved text. When routing stops, it does not create a task, and the text remains.
 
 ### Save the text first
 
