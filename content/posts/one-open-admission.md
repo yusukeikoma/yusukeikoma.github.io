@@ -93,7 +93,9 @@ In this design, an admission is not deleted by hanging it off the machine row. A
 
 A start passes through one admission. Starting locally, and taking from the queue, both ask for the same admission before execution.
 
-<img src="/images/one-admission.en.svg" alt="A local start and the queue both enter one open admission. The destination is fixed there. A resend returns the same admission." width="355" style="max-width:100%;height:auto;">
+<img src="/images/admission-entrances.en.svg" alt="A local start and the queue both enter one open admission. The machine, the place, and the generation are fixed at submit. Another machine cannot take it, and silence does not move the destination." width="700" style="max-width:100%;height:auto;">
+
+A local start and the queue are two arrows into one open admission. The destination is written on that admission at submit time: the machine, the place, and the generation. Another machine has no arrow that can take it. Silence does not move the destination.
 
 ### Write the destination at submit time
 
@@ -112,6 +114,10 @@ When attempts are stacked, the previous attempt is checked to be closed. While a
 The old pickup path locks the same row as the path that creates an admission. While an unfinished admission exists, the old path cannot become the owner. The side that creates an admission also cannot take that surface after the old path has written itself as the owner first.
 
 ### A resend returns the same admission
+
+<img src="/images/admission-resend.en.svg" alt="The same identifier, attempt, and digest return the same admission. A different digest is a conflict, not a new admission." width="700" style="max-width:100%;height:auto;">
+
+A resend with the same identifier, the same attempt, and the same digest returns the same admission. It does not open a second one. A different digest is a conflict, not a new admission.
 
 Lock first by the request identifier and the attempt. If there is no row, the placement matches, and the owner is empty, the admission is written. If the row exists and the digest matches, that row is returned. If the digest differs, it is a conflict. A resend after cancellation is not accepted.
 
