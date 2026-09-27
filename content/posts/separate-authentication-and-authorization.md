@@ -87,6 +87,10 @@ In this design, the operating side looks only at the permission set the server r
 
 Processing is split into four stages. Create an actor from a credential. Settle on one workspace. Evaluate the actor, the permission, and the workspace. Hand only an actor that passed to the route's processing.
 
+<img src="/images/auth-request.en.svg" alt="A credential becomes an actor with a kind and an identifier, and does not read a permission. One workspace uses the value on the route. Evaluation asks what the roles allow. Only an actor that passed reaches the route. Kind does not choose the route, and the route does not name who may call." width="700" style="max-width:100%;height:auto;">
+
+A request enters as a credential and leaves that step as an actor, carrying a kind and an identifier. Authentication stops there. It does not read a permission. The next step settles one workspace, using the value on the route. Evaluation asks what the roles allow. Only an actor that passed is handed to the route. The kind of credential does not choose the route, and the route does not name who may call it.
+
 ### Authentication goes as far as the actor
 
 The credentials that are accepted look at kind only once, here. A person's session becomes a person. A credential issued to a machine becomes that machine's actor. A key generation is bound to the actor, and it is a secret separate from a person's session. A key that delegates only one operation makes the key itself the actor, and the delegation dies when that key is discarded.
@@ -116,6 +120,10 @@ Refusal, and the record of a successful operation, are kept apart. The success r
 Whether a particular object row may be touched stays outside the role. What a role answers is whether this kind of operation is allowed. Which row is the processing query and the ownership of that row. Declaring a permission alone does not stop a caller who knows an identifier from reaching the neighboring row.
 
 ### Enforcement starts in the change after the foundation
+
+<img src="/images/auth-changes.en.svg" alt="The first change installs the foundation and leaves behavior in place. The next change starts enforcement, and an undeclared route fails at startup." width="700" style="max-width:100%;height:auto;">
+
+The first change installs the foundation and leaves existing behavior in place. The next change is the one that starts enforcement. An undeclared route then fails at startup.
 
 The first change brings in the permission catalog, the roles, the evaluation, a dependency that lets a route attach a declaration, and a walk that classifies every route. Existing routes keep running on the authentication they had. Behavior does not change. Routes still on the old authentication are counted. A change that increases that count is not accepted. If the count only decreases, adding a new route on the old authentication shows up as a difference in the count.
 
