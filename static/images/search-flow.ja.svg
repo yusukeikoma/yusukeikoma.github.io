@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="700" height="456" viewBox="0 0 700 456">
+  <rect x="0.5" y="0.5" width="699" height="455" rx="12" fill="#ffffff" stroke="#c2c7ce"/>
+  <defs>
+    <marker id="arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M1.2 1.4 L8.2 5 L1.2 8.6 Z" fill="#2b638b"/>
+    </marker>
+    <clipPath id="cardclip"><rect x="1" y="1" width="698" height="454" rx="12"/></clipPath>
+  </defs>
+  <g clip-path="url(#cardclip)">
+  <rect x="0" y="0" width="700" height="46" fill="#f7f9ff"/>
+  <line x1="0" y1="46" x2="700" y2="46" stroke="#c2c7ce"/>
+  <text x="20.0" y="23.0" fill="#181c20" font-size="15" font-weight="600" text-anchor="start" dominant-baseline="middle" font-family="'Inter', 'WenQuanYi Micro Hei', 'Hiragino Sans', 'Noto Sans JP', 'Yu Gothic', sans-serif">検索してから決め、正本へ書く</text>
+  <text x="682.0" y="24.0" fill="#8a4545" font-size="12" text-anchor="end" dominant-baseline="middle" font-family="'Inter', 'WenQuanYi Micro Hei', 'Hiragino Sans', 'Noto Sans JP', 'Yu Gothic', sans-serif">通らない</text>
+  <circle cx="618" cy="24" r="7" fill="#ffffff" stroke="#8a4545" stroke-width="1.4"/>
+  <line x1="614" y1="28" x2="622" y2="20" stroke="#8a4545" stroke-width="1.4"/>
+  <text x="602.0" y="24.0" fill="#2b638b" font-size="12" text-anchor="end" dominant-baseline="middle" font-family="'Inter', 'WenQuanYi Micro Hei', 'Hiragino Sans', 'Noto Sans JP', 'Yu Gothic', sans-serif">通る</text>
+  <line x1="548" y1="24" x2="570" y2="24" stroke="#2b638b" stroke-width="1.6" marker-end="url(#arr)"/>
+  <rect x="12" y="58" width="676" height="150" rx="8" fill="#f4f8fc"/>
+  <rect x="24" y="100" width="96" height="44" rx="8" fill="#ffffff" stroke="#2b638b" stroke-width="1.4"/>
+  <text x="72.0" y="122.0" fill="#181c20" font-size="14" font-weight="600" text-anchor="middle" dominant-baseline="middle" font-family="'Inter', 'WenQuanYi Micro Hei', 'Hiragino Sans', 'Noto Sans JP', 'Yu Gothic', sans-serif">正本</text>
+  <rect x="230" y="78" width="112" height="44" rx="8" fill="#ffffff" stroke="#2b638b" stroke-width="1.4"/>
+  <text x="286.0" y="100.0" fill="#181c20" font-size="14" font-weight="600" text-anchor="middle" dominant-baseline="middle" font-family="'Inter', 'WenQuanYi Micro Hei', 'Hiragino Sans', 'Noto Sans JP', 'Yu Gothic', sans-serif">検索した切片</text>
+  <rect x="505" y="100" width="171" height="48" rx="8" fill="#ffffff" stroke="#2b638b" stroke-width="1.4"/>
+  <text x="590.5" y="124.0" fill="#181c20" font-size="13" font-weight="600" text-anchor="middle" dominant-baseline="middle" font-family="'Inter', 'WenQuanYi Micro Hei', 'Hiragino Sans', 'Noto Sans JP', 'Yu Gothic', sans-serif">作成、更新、何もしない</text>
+  <line x1="126" y1="110" x2="224" y2="110" stroke="#2b638b" stroke-width="1.7" marker-end="url(#arr)"/>
+  <text x="175.0" y="98.0" fill="#2b638b" font-size="12" text-anchor="middle" dominant-baseline="middle" font-family="'Inter', 'WenQuanYi Micro Hei', 'Hiragino Sans', 'Noto Sans JP', 'Yu Gothic', sans-serif">検索</text>
+  <line x1="348" y1="110" x2="499" y2="110" stroke="#2b638b" stroke-width="1.7" marker-end="url(#arr)"/>
+  <text x="423.5" y="98.0" fill="#2b638b" font-size="12" text-anchor="middle" dominant-baseline="middle" font-family="'Inter', 'WenQuanYi Micro Hei', 'Hiragino Sans', 'Noto Sans JP', 'Yu Gothic', sans-serif">そのあと</text>
+  <path d="M590.5 148 V176 H72.0 V150" fill="none" stroke="#2b638b" stroke-width="1.7" marker-end="url(#arr)"/>
+  <text x="350.0" y="190.0" fill="#2b638b" font-size="12" text-anchor="middle" dominant-baseline="middle" font-family="'Inter', 'WenQuanYi Micro Hei', 'Hiragino Sans', 'Noto Sans JP', 'Yu Gothic', sans-serif">書く</text>
+  <rect x="12" y="214" width="676" height="150" rx="8" fill="#fbf7f7"/>
+  <rect x="69.0" y="231.0" width="42" height="22" rx="11" fill="#f8ecec" stroke="#8a4545"/>
+  <text x="90.0" y="242.0" fill="#8a4545" font-size="12" text-anchor="middle" dominant-baseline="middle" font-family="'Inter', 'WenQuanYi Micro Hei', 'Hiragino Sans', 'Noto Sans JP', 'Yu Gothic', sans-serif">文面</text>
+  <line x1="140" y1="242" x2="360" y2="242" stroke="#8a4545" stroke-width="1.5" stroke-dasharray="5 4"/>
+  <circle cx="250.0" cy="242" r="8" fill="#ffffff" stroke="#8a4545" stroke-width="1.5"/>
+  <line x1="245.5" y1="246.5" x2="254.5" y2="237.5" stroke="#8a4545" stroke-width="1.6"/>
+  <text x="250.0" y="262.0" fill="#8a4545" font-size="12" text-anchor="middle" dominant-baseline="middle" font-family="'Inter', 'WenQuanYi Micro Hei', 'Hiragino Sans', 'Noto Sans JP', 'Yu Gothic', sans-serif">検索の前に決めない</text>
+  <rect x="69.0" y="275.0" width="42" height="22" rx="11" fill="#f8ecec" stroke="#8a4545"/>
+  <text x="90.0" y="286.0" fill="#8a4545" font-size="12" text-anchor="middle" dominant-baseline="middle" font-family="'Inter', 'WenQuanYi Micro Hei', 'Hiragino Sans', 'Noto Sans JP', 'Yu Gothic', sans-serif">書く</text>
+  <line x1="140" y1="286" x2="360" y2="286" stroke="#8a4545" stroke-width="1.5" stroke-dasharray="5 4"/>
+  <circle cx="250.0" cy="286" r="8" fill="#ffffff" stroke="#8a4545" stroke-width="1.5"/>
+  <line x1="245.5" y1="290.5" x2="254.5" y2="281.5" stroke="#8a4545" stroke-width="1.6"/>
+  <text x="250.0" y="306.0" fill="#8a4545" font-size="12" text-anchor="middle" dominant-baseline="middle" font-family="'Inter', 'WenQuanYi Micro Hei', 'Hiragino Sans', 'Noto Sans JP', 'Yu Gothic', sans-serif">切片へは書かない</text>
+  <rect x="57.0" y="319.0" width="66" height="22" rx="11" fill="#f8ecec" stroke="#8a4545"/>
+  <text x="90.0" y="330.0" fill="#8a4545" font-size="12" text-anchor="middle" dominant-baseline="middle" font-family="'Inter', 'WenQuanYi Micro Hei', 'Hiragino Sans', 'Noto Sans JP', 'Yu Gothic', sans-serif">空の検索</text>
+  <line x1="140" y1="330" x2="360" y2="330" stroke="#8a4545" stroke-width="1.5" stroke-dasharray="5 4"/>
+  <circle cx="250.0" cy="330" r="8" fill="#ffffff" stroke="#8a4545" stroke-width="1.5"/>
+  <line x1="245.5" y1="334.5" x2="254.5" y2="325.5" stroke="#8a4545" stroke-width="1.6"/>
+  <text x="250.0" y="350.0" fill="#8a4545" font-size="12" text-anchor="middle" dominant-baseline="middle" font-family="'Inter', 'WenQuanYi Micro Hei', 'Hiragino Sans', 'Noto Sans JP', 'Yu Gothic', sans-serif">それだけでは作成にしない</text>
+  <rect x="12" y="376" width="676" height="64" rx="8" fill="#f4f8fc"/>
+  <rect x="40.0" y="397.0" width="126" height="22" rx="11" fill="#e7f2fb" stroke="#2b638b"/>
+  <text x="103.0" y="408.0" fill="#2b638b" font-size="12" text-anchor="middle" dominant-baseline="middle" font-family="'Inter', 'WenQuanYi Micro Hei', 'Hiragino Sans', 'Noto Sans JP', 'Yu Gothic', sans-serif">同じ流れの直前の行</text>
+  <line x1="180" y1="408" x2="510" y2="408" stroke="#2b638b" stroke-width="1.7" marker-end="url(#arr)"/>
+  <rect x="522.0" y="397.0" width="150" height="22" rx="11" fill="#e7f2fb" stroke="#2b638b"/>
+  <text x="597.0" y="408.0" fill="#2b638b" font-size="12" text-anchor="middle" dominant-baseline="middle" font-family="'Inter', 'WenQuanYi Micro Hei', 'Hiragino Sans', 'Noto Sans JP', 'Yu Gothic', sans-serif">索引を待たず正本を読む</text>
+  </g>
+</svg>

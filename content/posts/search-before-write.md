@@ -75,7 +75,9 @@ Stopping the next event until the previous row appears in search. Index lag beco
 
 Memory is split into three layers. Rows of the record, slices retrieved and handed over, and the decision of an operation.
 
-<img src="/images/search-before-write.en.svg" alt="A searched slice is taken from the record. Create or update is decided after that slice. The write goes back to the record." width="533" style="max-width:100%;height:auto;">
+<img src="/images/search-flow.en.svg" alt="Search takes a slice from the record. Create, update, or nothing is decided after that slice, and the write returns to the record. Wording does not decide before search. An empty search is not a create. A previous row in the same thread is read from the record without waiting for the index." width="700" style="max-width:100%;height:auto;">
+
+Search takes a slice from the record and hands that slice over. Create, update, or do-nothing is decided only after the slice is seen. When the decision writes, the arrow returns to the record. It does not write the slice. The wording does not choose the operation before search. An empty search is not itself a create. A row just written in the same thread is read from the record directly, without waiting for the index.
 
 ### The record stays as rows
 
