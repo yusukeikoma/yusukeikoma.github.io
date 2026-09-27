@@ -89,7 +89,18 @@ The three figures below draw, for each path, what travels, which way, and what d
 
 ### SSH only for install, and only the SSH a person already has
 
-<img src="/images/resident-install.en.svg" alt="At install, SSH carries artifacts and a credential on standard input from the person to the machine. The control plane does not dial in. The credential does not travel in an argument." width="700" style="max-width:100%;height:auto;">
+```mermaid
+sequenceDiagram
+  actor P as Person
+  participant M as Machine
+  participant C as Control plane
+  Note over P,C: Only at install. A cross does not pass.
+  P->>M: SSH
+  P->>M: artifacts
+  P->>M: credential on standard input
+  P-xM: not in an argument
+  C-xM: does not dial in
+```
 
 The arrow runs from the person to the machine, and only at install. SSH carries the artifacts and the credential. The credential is on standard input. The control plane has no arrow on this path, so it does not dial in. The credential does not travel in an argument.
 
@@ -107,7 +118,17 @@ An install with no local UI has the person approve a short code in a browser. Th
 
 ### After that, the machine connects outward
 
-<img src="/images/resident-outbound.en.svg" alt="After install, the machine sends an outward check of liveness and identity, and a separate request for work pickup. File contents and execution input and output do not ride on the check. The control plane does not dial in." width="700" style="max-width:100%;height:auto;">
+```mermaid
+sequenceDiagram
+  participant M as Machine
+  participant C as Control plane
+  Note over M,C: After install. A cross does not pass.
+  M->>C: liveness and identity
+  M->>C: work pickup
+  M-xC: file contents
+  M-xC: execution input and output
+  C-xM: does not dial in
+```
 
 After install, the machine opens two outward arrows to the control plane. The check carries liveness and identity. Work pickup is the other arrow, and it stays separate. File contents and execution input and output have no arrow onto the check. The control plane has no arrow back to the machine, so it does not dial.
 
@@ -137,7 +158,18 @@ Work pickup is also a short request originated by the machine. It is separate fr
 
 ### The data plane is SSH, and only while a person is present
 
-<img src="/images/resident-data.en.svg" alt="While a person is present, reads and writes travel over SSH to the machine, and change notices travel back. While the person is absent, the data plane waits and the outward check continues." width="700" style="max-width:100%;height:auto;">
+```mermaid
+sequenceDiagram
+  actor P as Person
+  participant M as Machine
+  participant C as Control plane
+  Note over P,M: While a person is present
+  P->>M: SSH, reads and writes
+  M->>P: change notices
+  Note over P,C: While the person is absent
+  P-xM: data plane waits
+  M->>C: outward check continues
+```
 
 While a person is present, reads and writes travel from the person to the machine over SSH, and change notices travel back. While the person is absent, the data-plane arrow waits. The outward check does not wait with it. It keeps going.
 
