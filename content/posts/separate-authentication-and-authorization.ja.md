@@ -88,7 +88,20 @@ isCJKLanguage: true
 
 処理は四段に分けました。資格情報から主体を作ること、作業場を一つに決めること、主体と権限と作業場を評価すること、そして通過した主体だけを経路の処理に渡すことです。
 
-<img src="/images/auth-request.ja.svg" alt="資格情報は、種類と識別子を持つ主体になり、権限は見ません。作業場は経路の値で一つに決まります。評価はロールが許すものを尋ね、通過した主体だけが経路へ届きます。種類は経路を選ばず、経路は誰が呼ぶかを書きません。" width="700" style="max-width:100%;height:auto;">
+```mermaid
+sequenceDiagram
+  participant C as 資格情報
+  participant A as 主体
+  participant R as 経路
+  C->>A: 種類と識別子
+  Note over A: 権限は見ません
+  A->>A: 作業場は一つ
+  Note over A: 経路の値です
+  A->>R: 通過した主体だけ
+  Note over R: ロールが許します
+  Note over C,R: 種類は経路を選びません
+  Note over R: 誰が呼ぶかは書きません
+```
 
 依頼は資格情報として入り、その段を出るときは主体です。主体が持つのは、種類と識別子です。認証はそこで終わります。権限は見ません。次の段で作業場を一つに決め、使うのは経路の値です。評価は、ロールが許すものを尋ねます。通過した主体だけを、経路へ渡します。資格情報の種類は経路を選ばず、経路は誰が呼ぶかを書きません。
 
@@ -122,7 +135,13 @@ isCJKLanguage: true
 
 ### 強制は、土台の次の変更で始める
 
-<img src="/images/auth-changes.ja.svg" alt="最初の変更は土台を入れ、挙動はそのままです。次の変更で強制が始まり、宣言の無い経路は起動に失敗します。" width="700" style="max-width:100%;height:auto;">
+```mermaid
+flowchart TB
+  first["最初の変更"] -->|"挙動はそのまま"| foundation["土台"]
+  first --> next["次の変更"]
+  next --> enforce["強制"]
+  enforce --> fail["未宣言は起動に失敗する"]
+```
 
 最初の変更は土台を入れ、それまでの挙動はそのままにします。強制が始まるのは、次の変更です。宣言の無い経路は、そこで起動に失敗します。
 

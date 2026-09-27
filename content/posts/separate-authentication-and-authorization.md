@@ -87,7 +87,20 @@ In this design, the operating side looks only at the permission set the server r
 
 Processing is split into four stages. Create an actor from a credential. Settle on one workspace. Evaluate the actor, the permission, and the workspace. Hand only an actor that passed to the route's processing.
 
-<img src="/images/auth-request.en.svg" alt="A credential becomes an actor with a kind and an identifier, and does not read a permission. One workspace uses the value on the route. Evaluation asks what the roles allow. Only an actor that passed reaches the route. Kind does not choose the route, and the route does not name who may call." width="700" style="max-width:100%;height:auto;">
+```mermaid
+sequenceDiagram
+  participant C as Credential
+  participant A as Actor
+  participant R as Route
+  C->>A: kind and id
+  Note over A: does not read permission
+  A->>A: one workspace
+  Note over A: value on the route
+  A->>R: only if it passed
+  Note over R: roles allow this
+  Note over C,R: kind does not choose the route
+  Note over R: does not name who may call
+```
 
 A request enters as a credential and leaves that step as an actor, carrying a kind and an identifier. Authentication stops there. It does not read a permission. The next step settles one workspace, using the value on the route. Evaluation asks what the roles allow. Only an actor that passed is handed to the route. The kind of credential does not choose the route, and the route does not name who may call it.
 
@@ -121,7 +134,13 @@ Whether a particular object row may be touched stays outside the role. What a ro
 
 ### Enforcement starts in the change after the foundation
 
-<img src="/images/auth-changes.en.svg" alt="The first change installs the foundation and leaves behavior in place. The next change starts enforcement, and an undeclared route fails at startup." width="700" style="max-width:100%;height:auto;">
+```mermaid
+flowchart TB
+  first["First change"] -->|"behavior stays"| foundation["Foundation"]
+  first --> next["Next change"]
+  next --> enforce["Enforcement"]
+  enforce --> fail["undeclared route fails at startup"]
+```
 
 The first change installs the foundation and leaves existing behavior in place. The next change is the one that starts enforcement. An undeclared route then fails at startup.
 
