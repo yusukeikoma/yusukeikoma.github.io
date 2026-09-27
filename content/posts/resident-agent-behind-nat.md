@@ -85,9 +85,24 @@ Each machine holds a person's key and names itself with an identifier in the bod
 
 The connection is split into three layers. SSH only at install time, a machine-originated check that continues after that, and a data plane that comes back only while a person is present.
 
-<img src="/images/resident-agent-layers.en.svg" alt="Install goes from the person to the machine, and only then. The outbound check continues from the machine to the control plane. The data plane goes from the person to the machine only while a person is present." width="425" style="max-width:100%;height:auto;">
+The three figures below draw, for each path, what travels, which way, and what does not pass.
 
 ### SSH only for install, and only the SSH a person already has
+
+```mermaid
+sequenceDiagram
+  actor P as Person
+  participant M as Machine
+  participant C as Control plane
+  Note over P,C: Only at install. A cross does not pass.
+  P->>M: SSH
+  P->>M: artifacts
+  P->>M: credential on standard input
+  P-xM: not in an argument
+  C-xM: does not dial in
+```
+
+The arrow runs from the person to the machine, and only at install. SSH carries the artifacts and the credential. The credential is on standard input. The control plane has no arrow on this path, so it does not dial in. The credential does not travel in an argument.
 
 The premise is that the person can SSH to that OS account. The control plane does not hold that path for them.
 
@@ -102,6 +117,20 @@ Immediately after it is placed, one outbound check uses that credential. Executi
 An install with no local UI has the person approve a short code in a browser. The exchange record does not contain the credential itself. A self-report before approval, a name, an account, or an identifier, is a display so the approving person can tell which machine it is. It is not a proof. The pickup after approval happens once. Expiry, refusal, and already-used all look like the same failure from the outside. Distinguishing which one happened would leak internal state to someone who only has the code.
 
 ### After that, the machine connects outward
+
+```mermaid
+sequenceDiagram
+  participant M as Machine
+  participant C as Control plane
+  Note over M,C: After install. A cross does not pass.
+  M->>C: liveness and identity
+  M->>C: work pickup
+  M-xC: file contents
+  M-xC: execution input and output
+  C-xM: does not dial in
+```
+
+After install, the machine opens two outward arrows to the control plane. The check carries liveness and identity. Work pickup is the other arrow, and it stays separate. File contents and execution input and output have no arrow onto the check. The control plane has no arrow back to the machine, so it does not dial.
 
 The service manager owns the daemon. Closing the UI does not call stop. The next time the UI opens, it uses the daemon that is already running. Only an explicit stop leaves a latch. Neither the UI nor an OS login clears it and starts the process again.
 
@@ -128,6 +157,21 @@ A request from the control plane to the machine rides on the liveness response. 
 Work pickup is also a short request originated by the machine. It is separate from the liveness check. The cost of a quiet machine scales with the number of machines, not with the number of directories being watched. One machine may watch several places, and one liveness connection is enough. Work whose destination is pinned to this installation waits here while the machine is silent.
 
 ### The data plane is SSH, and only while a person is present
+
+```mermaid
+sequenceDiagram
+  actor P as Person
+  participant M as Machine
+  participant C as Control plane
+  Note over P,M: While a person is present
+  P->>M: SSH, reads and writes
+  M->>P: change notices
+  Note over P,C: While the person is absent
+  P-xM: data plane waits
+  M->>C: outward check continues
+```
+
+While a person is present, reads and writes travel from the person to the machine over SSH, and change notices travel back. While the person is absent, the data-plane arrow waits. The outward check does not wait with it. It keeps going.
 
 When a person interacts with that machine, an existing SSH forward lands on the far UNIX socket. Rather than starting a new TCP connection or a cryptographic handshake on every request, a channel is added on the connection that is already up. The cost is close to one round trip per call. Reads and writes at the pace of a person are enough. Change notifications are watched on the far machine and flow back. The far side is not periodically reread in full.
 
