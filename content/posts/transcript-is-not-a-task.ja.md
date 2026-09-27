@@ -78,11 +78,28 @@ isCJKLanguage: true
 
 段階は四つに分けました。文字の保存、要約、どの作業場が読むかの振り分け、文字を読んでの作業の抽出、です。
 
-<img src="/images/transcript-data.ja.svg" alt="要約は保存した文字を読み、振り分けは要約を読みます。振り分けは作業を作りません。作業の抽出は要約ではなく保存した文字を読み、振り分けのあとに走ります。" width="700" style="max-width:100%;height:auto;">
+```mermaid
+flowchart TB
+  saved["保存した文字"] -->|"文字を読む"| summary["要約"]
+  summary -->|"要約を読む"| routing["振り分け"]
+  routing -->|"振り分けのあと"| extract["作業の抽出"]
+  saved -->|"文字を読む"| extract
+  routing x--x|"作業は作りません"| task["作業"]
+  summary x--x|"要約は入力ではありません"| extract
+  classDef block fill:#f8ecec,stroke:#8a4545,color:#181c20
+  class task block
+```
 
 保存した文字が、あとの段階が読む元です。要約はその文字を読み、振り分けは要約を読みます。振り分けから作業を作る矢印はありません。作業の抽出が読むのは保存した文字であり、要約ではありません。抽出は、振り分けのあとに走ります。
 
-<img src="/images/transcript-failure.ja.svg" alt="文字起こしが失敗しても録音は残ります。要約が失敗しても保存した文字は残ります。振り分けが止まっても、作業は作られず、文字は残ります。" width="700" style="max-width:100%;height:auto;">
+```mermaid
+flowchart TB
+  tf["文字起こしの失敗"] -->|"録音は残る"| rec["消しません"]
+  sf["要約の失敗"] -->|"文字は残る"| text["消しません"]
+  rs["振り分けが止まる"] -->|"作業は無く、文字は残る"| stay["消しません"]
+  rec ~~~ sf
+  text ~~~ rs
+```
 
 文字起こしが失敗しても、録音の行は消えません。要約が失敗しても、保存した文字は消えません。振り分けが止まっても、作業は作られず、文字は残ります。
 

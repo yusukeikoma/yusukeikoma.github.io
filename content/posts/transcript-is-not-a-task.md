@@ -77,11 +77,28 @@ Estimating the owner from the roster was also rejected. If the automatic recorde
 
 The stages are four. Saving the text, the summary, routing which workspace reads it, and extracting tasks by reading the text.
 
-<img src="/images/transcript-data.en.svg" alt="The summary reads the saved text, and routing reads the summary. Routing does not create a task. Task extraction reads the saved text, not the summary, and it runs after routing." width="700" style="max-width:100%;height:auto;">
+```mermaid
+flowchart TB
+  saved["Saved text"] -->|"reads this"| summary["Summary"]
+  summary -->|"reads the summary"| routing["Routing"]
+  routing -->|"after routing"| extract["Task extraction"]
+  saved -->|"reads this"| extract
+  routing x--x|"does not create a task"| task["a task"]
+  summary x--x|"not the input"| extract
+  classDef block fill:#f8ecec,stroke:#8a4545,color:#181c20
+  class task block
+```
 
 The saved text is the source both later stages read. The summary reads it, and routing reads the summary. Routing has no arrow that creates a task. Task extraction reads the saved text, not the summary, and it runs after routing.
 
-<img src="/images/transcript-failure.en.svg" alt="A failed transcription leaves the recording. A failed summary leaves the saved text. When routing stops, no task is created and the text stays." width="700" style="max-width:100%;height:auto;">
+```mermaid
+flowchart TB
+  tf["transcription fails"] -->|"recording stays"| rec["not erased"]
+  sf["summary fails"] -->|"saved text stays"| text["not erased"]
+  rs["routing stops"] -->|"no task, text stays"| stay["not erased"]
+  rec ~~~ sf
+  text ~~~ rs
+```
 
 A failed transcription does not delete the recording. A failed summary does not delete the saved text. When routing stops, it does not create a task, and the text remains.
 
