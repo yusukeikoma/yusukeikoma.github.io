@@ -1,0 +1,41 @@
+<script type="module">
+  const nodes = document.querySelectorAll(".mermaid");
+  if (nodes.length) {
+    const { default: mermaid } = await import("https://cdn.jsdelivr.net/npm/mermaid@11.12.0/dist/mermaid.esm.min.mjs");
+    mermaid.initialize({
+      startOnLoad: false,
+      securityLevel: "strict",
+      theme: "base",
+      fontFamily: "Lora, 'Noto Serif JP', serif",
+      themeVariables: {
+        fontFamily: "Lora, 'Noto Serif JP', serif",
+        fontSize: "16px",
+        primaryColor: "#f4f8fc",
+        primaryTextColor: "#181c20",
+        primaryBorderColor: "#2b638b",
+        lineColor: "#2b638b",
+        secondaryColor: "#f8ecec",
+        tertiaryColor: "#ffffff",
+        background: "#ffffff",
+        mainBkg: "#f4f8fc",
+        nodeBorder: "#2b638b",
+        clusterBkg: "#ffffff",
+        titleColor: "#181c20",
+        edgeLabelBackground: "#ffffff",
+        actorBkg: "#f4f8fc",
+        actorBorder: "#2b638b",
+        actorTextColor: "#181c20",
+        signalColor: "#2b638b",
+        signalTextColor: "#181c20",
+        noteBkgColor: "#f7f9ff",
+        noteBorderColor: "#c2c7ce",
+        noteTextColor: "#181c20"
+      },
+      flowchart: { htmlLabels: true, curve: "linear", padding: 16, nodeSpacing: 50, rankSpacing: 60, wrappingWidth: 200, useMaxWidth: false },
+      sequence: { actorMargin: 64, messageMargin: 40, mirrorActors: false, wrap: false, useMaxWidth: false, messageFontSize: 15, noteFontSize: 14, actorFontSize: 15 }
+    });
+    await document.fonts.ready;
+    await mermaid.run({ nodes });
+    document.body.dataset.mermaidReady = "1";
+  }
+</script>
