@@ -85,7 +85,9 @@ Only a document that has never had state is built once from plain text. After th
 
 There are two documents. The in-memory document while it is open, and the save for someone who reads later. The name is one per document, and a connection attaches to that name.
 
-<img src="/images/live-document-copy.en.svg" alt="After sync, the live document is copied to the saved copy. Empty is not written before sync." width="410" style="max-width:100%;height:auto;">
+<img src="/images/live-flow.en.svg" alt="Updates go from the live document to open connections and do not wait for the save. After sync, a copy is written. A later reader reads that copy. Empty before sync is not written." width="700" style="max-width:100%;height:auto;">
+
+Updates travel from the live document to every connection that has it open, and they do not wait for the save. After sync, a copy is written to the saved copy. Someone who opens it later reads that copy. Before sync finishes, an empty document has no arrow into the save.
 
 ### Do not show empty until sync finishes
 
@@ -98,6 +100,10 @@ This flag is held separately from whether it is shown. Even if a copy is shown a
 ### Updates are sent to open connections
 
 When a connection attaches, it receives the current state of that document. Later updates are applied to the in-memory document and sent to the other connections that have the same name open. They do not wait for the save to finish. Someone who does not have it open reads the saved state the next time they open it. The path for people who have it open, and the path for someone who opens it later, are different.
+
+<img src="/images/live-readonly.en.svg" alt="A connection that cannot write still receives updates. An update from that connection is dropped, and it reaches neither the live document nor the saved copy." width="700" style="max-width:100%;height:auto;">
+
+A connection that cannot write still receives updates, so it can see the document while it is open. An update that comes from that connection is dropped. It reaches neither the live document nor the saved copy.
 
 A connection that cannot write can still attach to the same document. It receives other connections' updates, so the document is visible while it is open. An update that came from that connection is dropped before it is applied. The in-memory document does not change, so it reaches neither the other connections nor the save. Not being able to write is not the same as not being able to see.
 
