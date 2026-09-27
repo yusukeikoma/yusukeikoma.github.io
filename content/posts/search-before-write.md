@@ -75,7 +75,18 @@ Stopping the next event until the previous row appears in search. Index lag beco
 
 Memory is split into three layers. Rows of the record, slices retrieved and handed over, and the decision of an operation.
 
-<img src="/images/search-flow.en.svg" alt="Search takes a slice from the record. Create, update, or nothing is decided after that slice, and the write returns to the record. Wording does not decide before search. An empty search is not a create. A previous row in the same thread is read from the record without waiting for the index." width="700" style="max-width:100%;height:auto;">
+```mermaid
+flowchart TB
+  record["Record"] -->|"search"| slice["Searched slice"]
+  slice -->|"then"| decision["Create, update, or nothing"]
+  decision -->|"write"| record
+  decision x--x|"not the slice"| slice
+  wording["wording"] x--x|"not before search"| decision
+  empty["empty search"] x--x|"not a create by itself"| decision
+  prev["previous row, same thread"] -->|"no wait for the index"| record
+  classDef block fill:#f8ecec,stroke:#8a4545,color:#181c20
+  class wording,empty block
+```
 
 Search takes a slice from the record and hands that slice over. Create, update, or do-nothing is decided only after the slice is seen. When the decision writes, the arrow returns to the record. It does not write the slice. The wording does not choose the operation before search. An empty search is not itself a create. A row just written in the same thread is read from the record directly, without waiting for the index.
 

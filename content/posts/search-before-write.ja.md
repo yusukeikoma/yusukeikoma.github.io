@@ -76,7 +76,18 @@ isCJKLanguage: true
 
 記憶は三層に分けました。正本の行、検索して渡す切片、操作の決定、です。
 
-<img src="/images/search-flow.ja.svg" alt="検索は正本から切片を取ります。作成か更新か何もしないかは、その切片のあとで決まり、書く矢印は正本へ戻ります。文面は検索の前に決めず、空の検索だけでは作成になりません。同じ流れの直前の行は、索引を待たず正本から読みます。" width="700" style="max-width:100%;height:auto;">
+```mermaid
+flowchart TB
+  record["正本"] -->|"検索"| slice["検索した切片"]
+  slice -->|"そのあと"| decision["作成、更新、何もしない"]
+  decision -->|"書く"| record
+  decision x--x|"切片ではありません"| slice
+  wording["文面"] x--x|"前には決めません"| decision
+  empty["空の検索"] x--x|"作成にはなりません"| decision
+  prev["同じ流れの直前の行"] -->|"索引を待ちません"| record
+  classDef block fill:#f8ecec,stroke:#8a4545,color:#181c20
+  class wording,empty block
+```
 
 検索は、正本から切片を取り、その切片を渡します。作成か、更新か、何もしないかは、切片を見てから決めます。決定が書くとき、矢印は正本へ戻ります。切片へは書きません。文面は、検索の前に操作を決めません。検索が空であることは、それだけでは作成になりません。同じ流れで直前に書いた行は、索引を待たず、正本から直接読みます。
 
