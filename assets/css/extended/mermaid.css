@@ -1,0 +1,16 @@
+.mermaid-wrap {
+  margin: 1.25rem 0;
+  overflow-x: auto;
+}
+
+.mermaid-wrap .mermaid {
+  background: #fff;
+  border: 1px solid #c2c7ce;
+  border-radius: 12px;
+  padding: 0.75rem 0.5rem;
+}
+
+.mermaid-wrap svg {
+  max-width: 100%;
+  height: auto;
+}

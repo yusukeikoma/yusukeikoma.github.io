@@ -93,7 +93,16 @@ In this design, an admission is not deleted by hanging it off the machine row. A
 
 A start passes through one admission. Starting locally, and taking from the queue, both ask for the same admission before execution.
 
-<img src="/images/admission-entrances.en.svg" alt="A local start and the queue both enter one open admission. The machine, the place, and the generation are fixed at submit. Another machine cannot take it, and silence does not move the destination." width="700" style="max-width:100%;height:auto;">
+```mermaid
+flowchart TB
+  local["Local start"] --> one["One open admission"]
+  queue["Queue"] --> one
+  one -->|"fixed at submit"| dest["machine, place, generation"]
+  other["Another machine"] x--x|"cannot take it"| one
+  silence["Silence"] x--x|"does not move the destination"| dest
+  classDef block fill:#f8ecec,stroke:#8a4545,color:#181c20
+  class other,silence block
+```
 
 A local start and the queue are two arrows into one open admission. The destination is written on that admission at submit time: the machine, the place, and the generation. Another machine has no arrow that can take it. Silence does not move the destination.
 
@@ -115,7 +124,16 @@ The old pickup path locks the same row as the path that creates an admission. Wh
 
 ### A resend returns the same admission
 
-<img src="/images/admission-resend.en.svg" alt="The same identifier, attempt, and digest return the same admission. A different digest is a conflict, not a new admission." width="700" style="max-width:100%;height:auto;">
+```mermaid
+sequenceDiagram
+  participant S as Same request
+  participant A as Admission
+  participant D as Other digest
+  Note over S: same id, attempt, digest
+  S->>A: same admission
+  S-xA: no second one
+  D-xA: conflict
+```
 
 A resend with the same identifier, the same attempt, and the same digest returns the same admission. It does not open a second one. A different digest is a conflict, not a new admission.
 

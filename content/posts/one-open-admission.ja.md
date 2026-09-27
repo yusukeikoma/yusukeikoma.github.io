@@ -94,7 +94,16 @@ isCJKLanguage: true
 
 開始は、一つの許可を通ります。手元から始めるときも、待ち行列から取るときも、実行の前に同じ許可を求めます。
 
-<img src="/images/admission-entrances.ja.svg" alt="手元からと待ち行列は、一つの未終了の許可へ入ります。宛先は投入時に、機械、場所、世代として固定されます。別の機械は取れず、沈黙は宛先を動かしません。" width="700" style="max-width:100%;height:auto;">
+```mermaid
+flowchart TB
+  local["手元から"] --> one["未終了の許可は一つ"]
+  queue["待ち行列"] --> one
+  one -->|"投入時に固定"| dest["機械、場所、世代"]
+  other["別の機械"] x--x|"取れません"| one
+  silence["沈黙"] x--x|"宛先は動きません"| dest
+  classDef block fill:#f8ecec,stroke:#8a4545,color:#181c20
+  class other,silence block
+```
 
 手元からの開始と、待ち行列は、一つの未終了の許可へ入る二本の矢印です。宛先は、投入したときにその許可へ書きます。書くのは、機械と、場所と、世代です。別の機械がそれを取る矢印はありません。沈黙は、宛先を動かしません。
 
@@ -116,7 +125,16 @@ isCJKLanguage: true
 
 ### 再送は同じ許可を返す
 
-<img src="/images/admission-resend.ja.svg" alt="同じ識別子、試行、ダイジェストは、同じ許可を返します。ダイジェストが違うときは衝突であり、新しい許可ではありません。" width="700" style="max-width:100%;height:auto;">
+```mermaid
+sequenceDiagram
+  participant S as 同じ依頼
+  participant A as 許可
+  participant D as 別の値
+  Note over S: 識別子、試行、ダイジェスト
+  S->>A: 同じ許可です
+  S-xA: 二本目はありません
+  D-xA: 衝突です
+```
 
 同じ識別子、同じ試行、同じダイジェストの再送は、同じ許可を返します。二本目は開きません。ダイジェストが違えば衝突であり、新しい許可ではありません。
 
