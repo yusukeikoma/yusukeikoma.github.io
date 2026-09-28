@@ -1,0 +1,6 @@
+{{- /* Inline SVG for a Learn field, from front matter `icon` (assets/learn/icons/<icon>.svg). */}}
+{{- with .Params.icon }}
+{{- with resources.Get (printf "learn/icons/%s.svg" .) }}
+<span class="learn-icon">{{ .Content | safeHTML }}</span>
+{{- end }}
+{{- end }}

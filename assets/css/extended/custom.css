@@ -279,6 +279,54 @@ details.toc,
     outline-offset: 2px;
 }
 
+/* Components draw their focus ring on the inside edge, so a scroll container or the
+   viewport can never clip it. Inline links in prose keep the outer ring above. */
+.header-nav a:focus-visible,
+.header-nav button:focus-visible,
+.entry-link:focus-visible,
+.paginav a:focus-visible,
+.pagination a:focus-visible,
+.post-tags a:focus-visible {
+    outline-offset: -3px;
+}
+
+/* Header controls were full header height (line-height), so their ring was a tall box.
+   Size them to the text with room for the inner ring; negative margins keep every label
+   exactly where it was and the header height unchanged. */
+.logo,
+#menu {
+    min-height: var(--header-height);
+    align-items: center;
+}
+
+.logo > a,
+#menu a,
+.lang-menu a,
+.theme-toggle {
+    border-radius: 10px;
+}
+
+.logo > a,
+#menu a {
+    line-height: 1.4;
+    padding: 6px 12px;
+    margin-inline: -12px;
+}
+
+/* Room inside the menu's scroll container for the first and last link's padding. */
+#menu {
+    padding-inline: 12px;
+    margin-inline: -12px;
+}
+
+.lang-menu a,
+.logo-switches > .theme-toggle {
+    min-height: auto;
+    line-height: 1.4;
+    padding: 6px 10px;
+    margin-inline: -3.6px;
+}
+
 /* === Footer === */
 .footer {
     font-size: 0.75rem;

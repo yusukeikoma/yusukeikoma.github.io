@@ -39,3 +39,6 @@
     document.body.dataset.mermaidReady = "1";
   }
 </script>
+{{- with resources.Get "js/arrow-nav.js" | minify | fingerprint }}
+<script src="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}" defer></script>
+{{- end }}

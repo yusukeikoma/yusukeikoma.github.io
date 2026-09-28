@@ -1,0 +1,70 @@
+{{- define "main" }}
+
+{{- $color := .Params.color | default "var(--md-primary)" }}
+{{- $isTop := eq .Path "/learn" }}
+
+{{- /* Learn top: each field floats as a glass bubble, all the same size. */}}
+{{- $bubbles := slice }}
+{{- if $isTop }}
+{{- range $i, $s := .Sections.ByWeight }}
+{{- $bubbles = $bubbles | append (dict "page" $s "n" (len $s.RegularPages) "i" $i) }}
+{{- end }}
+{{- end }}
+
+{{- if $isTop }}
+<header class="page-header">
+  {{- partial "breadcrumbs.html" . }}
+  <h1>{{ .Title }}</h1>
+</header>
+
+<section class="learn-stage" aria-label="{{ .Title }}">
+  <ul class="learn-bubbles">
+    {{- range $bubbles }}
+    {{- $s := .page }}
+    <li class="learn-bubble-item"
+        style="--c: {{ $s.Params.color | default "var(--md-primary)" | safeCSS }}; --dur: {{ add 6 (mod (mul .i 7) 4) }}s; --delay: -{{ mod (mul .i 13) 5 }}s;">
+      <a class="learn-bubble" href="{{ $s.RelPermalink }}" draggable="false">
+        <span class="learn-bubble-glow" aria-hidden="true"></span>
+        <span class="learn-glass learn-bubble-glass">
+          {{- partial "learn_icon.html" $s }}
+        </span>
+        <span class="learn-bubble-label">{{ $s.Title }}</span>
+        <span class="learn-bubble-sub">{{ if eq .n 0 }}Coming soon{{ else }}{{ .n }} {{ cond (eq .n 1) "page" "pages" }}{{ end }}</span>
+      </a>
+    </li>
+    {{- end }}
+  </ul>
+</section>
+{{- $drag := resources.Get "js/learn-drag.js" | minify | fingerprint }}
+<script src="{{ $drag.RelPermalink }}" integrity="{{ $drag.Data.Integrity }}" defer></script>
+
+{{- else }}
+{{- /* A field: pages line up in weight order as numbered steps. */}}
+<header class="page-header learn-field-header" style="--c: {{ $color | safeCSS }};">
+  {{- partial "breadcrumbs.html" . }}
+  <div class="learn-field-title">
+    <span class="learn-glass learn-field-icon">{{ partial "learn_icon.html" . }}</span>
+    <h1>{{ .Title }}</h1>
+  </div>
+</header>
+
+{{- with .RegularPages.ByWeight }}
+<ol class="learn-steps" style="--c: {{ $color | safeCSS }};">
+  {{- range $i, $p := . }}
+  <li>
+    <a class="learn-step" href="{{ $p.RelPermalink }}">
+      <span class="learn-glass learn-step-number">{{ add $i 1 }}</span>
+      <span class="learn-step-body">
+        <span class="learn-step-title">{{ $p.Title }}</span>
+        <span class="learn-step-meta">{{ partial "learn_meta.html" $p }}</span>
+      </span>
+    </a>
+  </li>
+  {{- end }}
+</ol>
+{{- else }}
+<p class="learn-empty">No pages yet.</p>
+{{- end }}
+{{- end }}
+
+{{- end }}{{- /* end main */ -}}
