@@ -316,3 +316,19 @@ details.toc,
         font-size: 1.05rem;
     }
 }
+
+/* Learn section */
+.learn-index {
+    color: var(--secondary);
+    font-weight: 400;
+    margin-right: 0.2em;
+}
+
+.learn-lang {
+    display: inline-block;
+    padding: 0 0.5em;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    font-size: 0.85em;
+    line-height: 1.6;
+}

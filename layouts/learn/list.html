@@ -1,0 +1,57 @@
+{{- define "main" }}
+
+<header class="page-header">
+  {{- partial "breadcrumbs.html" . }}
+  <h1>{{ .Title }}</h1>
+  {{- with .Description }}
+  <div class="post-description">
+    {{ . | markdownify }}
+  </div>
+  {{- end }}
+</header>
+
+{{- with .Content }}
+<div class="post-content md-content">
+  {{- partial "anchored_headings.html" . -}}
+</div>
+{{- end }}
+
+{{- /* Fields (sub-sections) first, then this field's pages, both ordered by weight. */}}
+{{- range .Sections.ByWeight }}
+<article class="post-entry learn-entry">
+  <header class="entry-header">
+    <h2>{{ .Title }}</h2>
+  </header>
+  {{- with .Description }}
+  <div class="entry-content">
+    <p>{{ . | plainify }}</p>
+  </div>
+  {{- end }}
+  <footer class="entry-footer">
+    <span>{{ len .RegularPages }} ページ</span>
+  </footer>
+  <a class="entry-link" aria-label="{{ .Title | plainify }}" href="{{ .Permalink }}"></a>
+</article>
+{{- end }}
+
+{{- range $i, $p := .RegularPages.ByWeight }}
+<article class="post-entry learn-entry">
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">
+      <span class="learn-index">{{ add $i 1 }}.</span> {{ .Title }}
+      {{- if .Draft }}<span class="entry-hint" title="Draft">(draft)</span>{{- end }}
+    </h2>
+  </header>
+  {{- with .Description | default .Summary }}
+  <div class="entry-content">
+    <p>{{ . | plainify | htmlUnescape }}</p>
+  </div>
+  {{- end }}
+  <footer class="entry-footer">
+    {{- partial "learn_meta.html" . -}}
+  </footer>
+  <a class="entry-link" aria-label="{{ .Title | plainify }}" href="{{ .Permalink }}"></a>
+</article>
+{{- end }}
+
+{{- end }}{{- /* end main */ -}}

@@ -1,0 +1,16 @@
+{{- /* Meta line for Learn pages: languages used, last update, reading time. */}}
+{{- $meta := slice }}
+{{- with .Params.languages }}
+{{- $badges := slice }}
+{{- range . }}
+{{- $badges = $badges | append (printf "<span class=\"learn-lang\">%s</span>" (. | htmlEscape)) }}
+{{- end }}
+{{- $meta = $meta | append (delimit $badges " ") }}
+{{- end }}
+{{- if not .Lastmod.IsZero }}
+{{- $meta = $meta | append (printf "<span title='%s'>更新: %s</span>" .Lastmod (.Lastmod | time.Format ":date_long")) }}
+{{- end }}
+{{- if .Param "ShowReadingTime" }}
+{{- $meta = $meta | append (printf "<span>%s</span>" (i18n "read_time" .ReadingTime | default (printf "%d min" .ReadingTime))) }}
+{{- end }}
+{{- delimit $meta "&nbsp;|&nbsp;" | safeHTML -}}
