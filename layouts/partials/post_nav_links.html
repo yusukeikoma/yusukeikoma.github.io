@@ -1,4 +1,9 @@
 {{- $pages := where site.RegularPages "Type" "in" site.Params.mainSections }}
+{{- /* Learn pages step through their own field in weight order.
+       Pages.Prev returns the element after the page, so reverse to make "Prev" the lower weight. */}}
+{{- if eq .Section "learn" }}
+{{- $pages = .CurrentSection.RegularPages.ByWeight.Reverse }}
+{{- end }}
 {{- if and (gt (len $pages) 1) (in $pages . ) }}
 <nav class="paginav">
   {{- with $pages.Prev . }}

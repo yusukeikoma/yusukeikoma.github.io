@@ -24,6 +24,8 @@ disableKinds = ["taxonomy", "term"]
   UseHugoToc = true
   displayFullLangName = true
   disableLangToggle = false
+  # Home page and post prev/next links cover posts only; Learn has its own order.
+  mainSections = ["posts"]
 
   [params.homeInfoParams]
     Title = "👋 Hi, I'm Yusuke Ikoma"
@@ -60,10 +62,17 @@ disableKinds = ["taxonomy", "term"]
     name = "Posts"
     url = "/posts/"
     weight = 1
+  # Learn is Japanese-only for now, so the English menu links to /ja/learn/.
+  [[languages.en.menu.main]]
+    name = "Learn"
+    url = "/ja/learn/"
+    weight = 2
+    [languages.en.menu.main.params]
+      skipLangPrefix = true
   [[languages.en.menu.main]]
     name = "About"
     url = "/about/"
-    weight = 2
+    weight = 3
   [[languages.en.menu.main]]
     name = "Search"
     url = "/search/"
@@ -88,9 +97,13 @@ disableKinds = ["taxonomy", "term"]
     url = "/posts/"
     weight = 1
   [[languages.ja.menu.main]]
+    name = "Learn"
+    url = "/learn/"
+    weight = 2
+  [[languages.ja.menu.main]]
     name = "About"
     url = "/about/"
-    weight = 2
+    weight = 3
   [[languages.ja.menu.main]]
     name = "Search"
     url = "/search/"

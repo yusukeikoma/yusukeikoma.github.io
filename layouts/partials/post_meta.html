@@ -1,3 +1,6 @@
+{{- if eq .Section "learn" }}
+{{- partial "learn_meta.html" . }}
+{{- else }}
 {{- $scratch := newScratch }}
 
 {{- if not .Date.IsZero -}}
@@ -21,3 +24,4 @@
 {{- with ($scratch.Get "meta") }}
 {{- delimit . "&nbsp;|&nbsp;" | safeHTML -}}
 {{- end -}}
+{{- end }}
