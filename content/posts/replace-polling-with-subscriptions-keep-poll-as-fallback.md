@@ -1,7 +1,7 @@
 ---
 title: "Replace Polling with Change Subscriptions, and Keep the Poll as the Fallback"
 date: 2026-10-02T17:00:00+09:00
-draft: true
+draft: false
 tags: ["typescript", "websocket", "react-native", "realtime"]
 summary: "How a mobile client moved from timer-driven polling to shared change subscriptions over a per-message-billed relay. The subtle part is not the stream. It is deciding honestly when the fallback poll may stand down."
 math: false
