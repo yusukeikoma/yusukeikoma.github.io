@@ -1,6 +1,6 @@
 ---
 title: "Coalescing Realtime Invalidations: Key Scoping and a Leading/Trailing Window"
-date: 2026-10-03T13:30
+date: 2026-10-03T13:30:00+09:00
 draft: false
 tags: ["typescript", "react-native", "react-query", "realtime"]
 summary: "Realtime events that invalidate a client cache can multiply into far more refetches than the data changed. Two small fixes, a predicate that only matches list keys and a per-key leading/trailing window, and the rules around them that keep the result correct."
