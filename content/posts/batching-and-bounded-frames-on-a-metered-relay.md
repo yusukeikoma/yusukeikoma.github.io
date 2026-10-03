@@ -1,7 +1,7 @@
 ---
 title: "Batching and Bounded Frames on a Metered Relay"
-date: 2026-10-02T16:50:00+09:00
-draft: true
+date: 2026-10-03T19:50:00+09:00
+draft: false
 tags: ["go", "javascript", "websocket", "durable-objects"]
 summary: "When every WebSocket message costs money and every frame has a hard cap, you need batching with independent flush triggers, a single-frame threshold below the cap, bounded chunking, and capability flags that survive mixed-version rollouts. The sharp edges are ordering on shutdown and a zero value that disappears from the wire."
 math: false
